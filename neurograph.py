@@ -2,22 +2,23 @@ from torch_geometric.data import Data, InMemoryDataset
 from torch_geometric.data import InMemoryDataset, download_url
 import os,glob
 import torch
+import zipfile
 
 
-class BrainConnectomeBenchmarks(InMemoryDataset):
+class NeuroGraphStatic(InMemoryDataset):
 
     def __init__(self, root,name, transform=None, pre_transform=None, pre_filter=None):
         self.name = name
-        if self.name=="HCPRest":
-            self.url = "https://www.dropbox.com/s/mjx6yybnw00n521/HCPRest.pt?raw=1"
-        if self.name=="HCPTask":
-            self.url = "https://www.dropbox.com/s/ojegv3xrjvmeo2b/HCPTask.pt?raw=1" 
-            
-        super().__init__(root, transform, pre_transform, pre_filter)
+        self.root = root
+        self.urls = {"HCPGender":'https://vanderbilt.box.com/shared/static/r6hlz2arm7yiy6v6981cv2nzq3b0meax.zip',
+                    "HCPActivity":'https://vanderbilt.box.com/shared/static/b4g59ibn8itegr0rpcd16m9ajb2qyddf.zip',
+                    "HCPAge":'https://vanderbilt.box.com/shared/static/lzzks4472czy9f9vc8aikp7pdbknmtfe.zip',
+                    "HCPWM":'https://vanderbilt.box.com/shared/static/xtmpa6712fidi94x6kevpsddf9skuoxy.zip',
+                    "HCPFI":'https://vanderbilt.box.com/shared/static/g2md9h9snh7jh6eeay02k1kr9m4ido9f.zip'
+                    }
+        super(NeuroGraphStatic,self).__init__(root, name,transform, pre_transform, pre_filter)
         
         self.data, self.slices = torch.load(self.processed_paths[0])
-        
-
     @property
     def raw_dir(self):
         return os.path.join(self.root,self.name, self.name+'raw')
@@ -33,13 +34,20 @@ class BrainConnectomeBenchmarks(InMemoryDataset):
     
     @property
     def processed_file_names(self):
-        return ['data.pt']
+        return [self.name+'.pt']
     
     
     def download(self):
         # Download to `self.raw_dir`.
-        print("downloading the data")
-        download_url(self.url, self.raw_dir)
+        print("downloading the data. The files are large and may take a few minutes")
+        if self.urls.get(self.name):
+            download_url(self.urls.get(self.name), self.raw_dir)
+            basename = os.path.basename(self.urls.get(self.name))
+            with zipfile.ZipFile(os.path.join(self.raw_dir,basename), 'r') as file:
+                file.extractall(os.path.join(self.raw_dir,os.path.dirname(basename)))
+            # self.remove(os.path.join(self.raw_dir,basename))
+        else:
+            print('dataset not found! The name of the datasets are: "HCPGender","HCPActivity","HCPAge","HCPWM","HCPFI"')
     
     @property
     def num_node_attributes(self) -> int:
@@ -55,7 +63,7 @@ class BrainConnectomeBenchmarks(InMemoryDataset):
     
     def process(self):
         print("processing the data")
-        data, slices = torch.load(os.path.join(self.raw_dir, self.name+'.pt'))
+        data, slices = torch.load(os.path.join(self.raw_dir,self.name,"processed", self.name+'.pt'))
         num_samples = slices['x'].size(0)-1
         data_list = []
         for i in range(num_samples):
