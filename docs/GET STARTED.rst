@@ -1,10 +1,11 @@
 GET STARTED
 ===================
 
-Module contents
----------------
+Examples: Load static dataset
+-------------------------------------
+Here is how to load static dataset
 
-.. automodule:: GET STARTED
-   :members:
-   :undoc-members:
-   :show-inheritance:
+
+Example: Load dynamic dataset
+--------------------------------------
+

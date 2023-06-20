@@ -1,10 +1,6 @@
-INSTALL NeuroGraph package
+Install NeuroGraph
 ==========================
 
-Module contents
----------------
 
-.. automodule:: INSTALL NeuroGraph
-   :members:
-   :undoc-members:
-   :show-inheritance:
+
+Do the following steps to install NeuroGraph

@@ -11,7 +11,9 @@ Welcome to NeuroGraph's documentation!
    :caption: Contents:
 
    GET STARTED
+   INSTALL NeuroGraph
    neurograph
+   
 
 Indices and tables
 ==================

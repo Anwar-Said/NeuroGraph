@@ -1,4 +1,4 @@
-neurograph
+Load Static Datasets
 =================
 
 .. automodule:: neurograph
