@@ -6,9 +6,34 @@ import zipfile
 
 
 class NeuroGraphStatic(InMemoryDataset):
+    r"""
+    Graph-based neuroimaging benchmark datasets, *.e.g.*,
+    :obj:`"HCPGender"`, :obj:`"HCPAge"`, :obj:`"HCPActivity"`,
+    :obj:`"HCP-WM"`, or :obj:`"HCP-FI"`
 
-    def __init__(self, root,name, transform=None, pre_transform=None, pre_filter=None):
-        self.name = name
+
+    Args:
+        root (str): Root directory where the dataset should be saved.
+        name (str): The `name
+            <https://anwar-said.github.io/anwarsaid/neurograph.html/>`_ of the
+            dataset.
+        transform (callable, optional): A function/transform that takes in an
+            :obj:`torch_geometric.data.Data` object and returns a transformed
+            version. The data object will be transformed before every access.
+            (default: :obj:`None`)
+        pre_transform (callable, optional): A function/transform that takes in
+            an :obj:`torch_geometric.data.Data` object and returns a
+            transformed version. The data object will be transformed before
+            being saved to disk. (default: :obj:`None`)
+        pre_filter (callable, optional): A function that takes in an
+            :obj:`torch_geometric.data.Data` object and returns a boolean
+            value, indicating whether the data object should be included in the
+            final dataset. (default: :obj:`None`)
+    """
+    
+    def __init__(self, root, dataset_name,transform=None, pre_transform=None, pre_filter=None):
+        self.root, self.name = root, dataset_name
+        super().__init__(root, transform, pre_transform, pre_filter)
         self.root = root
         self.urls = {"HCPGender":'https://vanderbilt.box.com/shared/static/r6hlz2arm7yiy6v6981cv2nzq3b0meax.zip',
                     "HCPActivity":'https://vanderbilt.box.com/shared/static/b4g59ibn8itegr0rpcd16m9ajb2qyddf.zip',
@@ -16,9 +41,9 @@ class NeuroGraphStatic(InMemoryDataset):
                     "HCPWM":'https://vanderbilt.box.com/shared/static/xtmpa6712fidi94x6kevpsddf9skuoxy.zip',
                     "HCPFI":'https://vanderbilt.box.com/shared/static/g2md9h9snh7jh6eeay02k1kr9m4ido9f.zip'
                     }
-        super(NeuroGraphStatic,self).__init__(root, name,transform, pre_transform, pre_filter)
         
         self.data, self.slices = torch.load(self.processed_paths[0])
+
     @property
     def raw_dir(self):
         return os.path.join(self.root,self.name, self.name+'raw')
@@ -31,12 +56,11 @@ class NeuroGraphStatic(InMemoryDataset):
     def processed_dir(self) -> str:
         name = 'processed'
         return os.path.join(self.root, self.name, name)
-    
+
     @property
     def processed_file_names(self):
         return [self.name+'.pt']
-    
-    
+
     def download(self):
         # Download to `self.raw_dir`.
         print("downloading the data. The files are large and may take a few minutes")
@@ -48,18 +72,6 @@ class NeuroGraphStatic(InMemoryDataset):
             # self.remove(os.path.join(self.raw_dir,basename))
         else:
             print('dataset not found! The name of the datasets are: "HCPGender","HCPActivity","HCPAge","HCPWM","HCPFI"')
-    
-    @property
-    def num_node_attributes(self) -> int:
-        return self.data.x.shape[1]
-    
-    @property
-    def num_node_labels(self):
-        return None
-    
-    @property
-    def num_edge_labels(self):
-        return None
     
     def process(self):
         print("processing the data")
@@ -85,3 +97,4 @@ class NeuroGraphStatic(InMemoryDataset):
 
         data, slices = self.collate(data_list)
         torch.save((data, slices), self.processed_paths[0])
+       
