@@ -12,8 +12,8 @@ import math
 # labels = ngd.labels
 # print(len(dataset),len(labels))
 
-# ACCESS_KEY = 'AKIAXO65CT57HFCOMHVK'
-# SECRET_KEY = '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'
+# ACCESS_KEY = ''
+# SECRET_KEY = ''
 # s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
 # pd_obj = Preprocess_dynamic(root, name,s3)
 # dataset = pd_obj.data_dict

@@ -63,8 +63,8 @@ def main():
     # for d in activity_dataset:
     #     print(d, d.y.item())
 
-    # ACCESS_KEY = 'AKIAXO65CT57HFCOMHVK'
-    # SECRET_KEY = '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'
+    # ACCESS_KEY = ''
+    # SECRET_KEY = ''
     # s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
 
     # root ="data/"
