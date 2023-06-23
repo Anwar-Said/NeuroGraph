@@ -1,0 +1,6 @@
+boto3==1.26.158
+nilearn==0.10.1
+pandas
+torch
+torch_geometric
+networkx==2.6

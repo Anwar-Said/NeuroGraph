@@ -29,8 +29,9 @@ class NeuroGraphStatic(InMemoryDataset):
             :obj:`torch_geometric.data.Data` object and returns a boolean
             value, indicating whether the data object should be included in the
             final dataset. (default: :obj:`None`)
+        return: Pytorch geometric dataset
     """
-    
+
     def __init__(self, root, dataset_name,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.name = root, dataset_name
         super().__init__(root, transform, pre_transform, pre_filter)

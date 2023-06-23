@@ -1,14 +1,12 @@
-Load Datasets
+Preprocess fMRI
 =================
 
-.. automodule:: neurograph
+.. automodule:: preprocess
    :members:
    :undoc-members:
    :show-inheritance:
-
-.. automodule:: neurograph_dynamic
+   
+.. automodule:: process_dynamic
    :members:
    :undoc-members:
    :show-inheritance:
-
-

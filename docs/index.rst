@@ -8,13 +8,28 @@ Welcome to NeuroGraph's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Install NeuroGraph:
+
+   INSTALL
+.. toctree::
+   :maxdepth: 2
+   :caption: GET STARTED:
 
    GET STARTED
-   INSTALL NeuroGraph
-   neurograph
    
+   
+.. toctree::
+   :maxdepth: 2
+   :caption: Benchmarks Loading:
 
+   neurograph
+.. toctree::
+   :maxdepth: 2
+   :caption: Preprocesing:
+
+   preprocess_fmri
+   preprocess
+   
 Indices and tables
 ==================
 
