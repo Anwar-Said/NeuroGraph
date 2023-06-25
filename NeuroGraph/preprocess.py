@@ -267,39 +267,6 @@ def DynPrep(fmri,regs,n_rois = 100, window_size = 50,stride = 3,dynamic_length=N
 
 
 class Brain_connectome_Rest(InMemoryDataset):
-    r"""
-    Graph-based neuroimaging benchmark datasets,
-
-
-    Args:
-        root (str): Root directory where the dataset should be saved.
-
-        name (str): The `name
-            <https://anwar-said.github.io/anwarsaid/neurograph.html/>`_ of the
-            dataset.
-
-        rois (int): the number of ROIs to be used for parcellation. 
-        Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}
-
-        path_to_data: Path to the fMRI data.
-
-        n_jobs: the number of jobs to process the data in parallel.
-
-        transform (callable, optional): A function/transform that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a transformed
-            version. The data object will be transformed before every access.
-            (default: :obj:`None`)
-        pre_transform (callable, optional): A function/transform that takes in
-            an :obj:`torch_geometric.data.Data` object and returns a
-            transformed version. The data object will be transformed before
-            being saved to disk. (default: :obj:`None`)
-        pre_filter (callable, optional): A function that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a boolean
-            value, indicating whether the data object should be included in the
-            final dataset. (default: :obj:`None`)
-        
-        return: Pytroch geometric dataset with four classes: [0] - gender, [1]-age, [2]- working memory and [3] -fluid intelligence 
-    """
     def __init__(self, root,name,n_rois, threshold,path_to_data,n_jobs, transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.path_to_data,self.n_jobs = root, name,n_rois,threshold,path_to_data,n_jobs
         super().__init__(root, transform, pre_transform, pre_filter)
@@ -423,36 +390,7 @@ class Brain_connectome_Rest(InMemoryDataset):
         torch.save((data, slices), self.processed_paths[0])
 
 class Gender_Dataset(InMemoryDataset):
-    r"""
-    Graph-based neuroimaging dataset,
-
-
-    Args:
-        root (str): Root directory where the dataset should be saved.
-
-        name (str): The `name
-            <https://anwar-said.github.io/anwarsaid/neurograph.html/>`_ of the
-            dataset.
-
-        
-
-        dataset: Pyg dataset obtained from Brain_connectome_Rest class 
-
-        transform (callable, optional): A function/transform that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a transformed
-            version. The data object will be transformed before every access.
-            (default: :obj:`None`)
-        pre_transform (callable, optional): A function/transform that takes in
-            an :obj:`torch_geometric.data.Data` object and returns a
-            transformed version. The data object will be transformed before
-            being saved to disk. (default: :obj:`None`)
-        pre_filter (callable, optional): A function that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a boolean
-            value, indicating whether the data object should be included in the
-            final dataset. (default: :obj:`None`)
-        
-        return: Pytroch geometric dataset
-    """
+   
     def __init__(self, root,dataset_name, dataset,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name, self.dataset = root, dataset_name,dataset
         super().__init__(root, transform, pre_transform, pre_filter)
@@ -482,36 +420,7 @@ class Gender_Dataset(InMemoryDataset):
 
 
 class Age_Dataset(InMemoryDataset):
-    r"""
-    Graph-based neuroimaging dataset,
-
-
-    Args:
-        root (str): Root directory where the dataset should be saved.
-
-        name (str): The `name
-            <https://anwar-said.github.io/anwarsaid/neurograph.html/>`_ of the
-            dataset.
-
-        
-
-        dataset: Pyg dataset obtained from Brain_connectome_Rest class 
-
-        transform (callable, optional): A function/transform that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a transformed
-            version. The data object will be transformed before every access.
-            (default: :obj:`None`)
-        pre_transform (callable, optional): A function/transform that takes in
-            an :obj:`torch_geometric.data.Data` object and returns a
-            transformed version. The data object will be transformed before
-            being saved to disk. (default: :obj:`None`)
-        pre_filter (callable, optional): A function that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a boolean
-            value, indicating whether the data object should be included in the
-            final dataset. (default: :obj:`None`)
-        
-        return: Pytroch geometric dataset
-    """
+    
     def __init__(self, root,dataset_name, dataset,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name, self.dataset = root, dataset_name,dataset
         super().__init__(root, transform, pre_transform, pre_filter)
@@ -541,36 +450,7 @@ class Age_Dataset(InMemoryDataset):
         torch.save((data, slices), self.processed_paths[0])
 
 class WM_Dataset(InMemoryDataset):
-    r"""
-    Graph-based neuroimaging dataset,
-
-
-    Args:
-        root (str): Root directory where the dataset should be saved.
-
-        name (str): The `name
-            <https://anwar-said.github.io/anwarsaid/neurograph.html/>`_ of the
-            dataset.
-
-        
-
-        dataset: Pyg dataset obtained from Brain_connectome_Rest class 
-
-        transform (callable, optional): A function/transform that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a transformed
-            version. The data object will be transformed before every access.
-            (default: :obj:`None`)
-        pre_transform (callable, optional): A function/transform that takes in
-            an :obj:`torch_geometric.data.Data` object and returns a
-            transformed version. The data object will be transformed before
-            being saved to disk. (default: :obj:`None`)
-        pre_filter (callable, optional): A function that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a boolean
-            value, indicating whether the data object should be included in the
-            final dataset. (default: :obj:`None`)
-        
-        return: Pytroch geometric dataset with working memory values  as labels
-        """
+    
     def __init__(self, root,dataset_name, dataset,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name, self.dataset = root, dataset_name,dataset
         super().__init__(root, transform, pre_transform, pre_filter)
@@ -604,36 +484,7 @@ class WM_Dataset(InMemoryDataset):
         torch.save((data, slices), self.processed_paths[0])
 
 class FI_Dataset(InMemoryDataset):
-    r"""
-    Graph-based neuroimaging dataset,
-
-
-    Args:
-        root (str): Root directory where the dataset should be saved.
-
-        name (str): The `name
-            <https://anwar-said.github.io/anwarsaid/neurograph.html/>`_ of the
-            dataset.
-
-        
-
-        dataset: Pyg dataset obtained from Brain_connectome_Rest class 
-
-        transform (callable, optional): A function/transform that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a transformed
-            version. The data object will be transformed before every access.
-            (default: :obj:`None`)
-        pre_transform (callable, optional): A function/transform that takes in
-            an :obj:`torch_geometric.data.Data` object and returns a
-            transformed version. The data object will be transformed before
-            being saved to disk. (default: :obj:`None`)
-        pre_filter (callable, optional): A function that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a boolean
-            value, indicating whether the data object should be included in the
-            final dataset. (default: :obj:`None`)
-        
-        return: Pytroch geometric dataset with Fluid Intelligence values as labels
-        """
+    
     def __init__(self, root,dataset_name, dataset,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name, self.dataset = root, dataset_name,dataset
         super().__init__(root, transform, pre_transform, pre_filter)
@@ -669,40 +520,7 @@ class FI_Dataset(InMemoryDataset):
         torch.save((data, slices), self.processed_paths[0])
 
 class Brain_connectome_Activity(InMemoryDataset):
-    r"""
-    Graph-based neuroimaging benchmark datasets,
-
-
-    Args:
-        root (str): Root directory where the dataset should be saved.
-
-        name (str): The `name
-            <https://anwar-said.github.io/anwarsaid/neurograph.html/>`_ of the
-            dataset.
-
-        rois (int): the number of ROIs to be used for parcellation. 
-        Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}
-
-        path_to_data: Path to the fMRI data.
-
-        n_jobs: the number of jobs to process the data in parallel.
-
-        transform (callable, optional): A function/transform that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a transformed
-            version. The data object will be transformed before every access.
-            (default: :obj:`None`)
-        pre_transform (callable, optional): A function/transform that takes in
-            an :obj:`torch_geometric.data.Data` object and returns a
-            transformed version. The data object will be transformed before
-            being saved to disk. (default: :obj:`None`)
-        pre_filter (callable, optional): A function that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a boolean
-            value, indicating whether the data object should be included in the
-            final dataset. (default: :obj:`None`)
-        
-        return: Pytroch geometric dataset with activity as class
-    """
-
+    
     def __init__(self, root, dataset_name,n_rois, threshold,path_to_data,n_jobs,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.path_to_data,self.n_jobs = root, dataset_name,n_rois,threshold,path_to_data,n_jobs
         super().__init__(root, transform, pre_transform, pre_filter)
@@ -838,39 +656,7 @@ class Brain_connectome_Activity(InMemoryDataset):
 
 
 class Brain_connectome_Rest_Download(InMemoryDataset):
-    r"""
-        Graph-based neuroimaging benchmark datasets crawling from HCP S3 bucket,
-
-
-        Args:
-            root (str): Root directory where the dataset should be saved.
-
-            name (str): The `name
-                <https://anwar-said.github.io/anwarsaid/neurograph.html/>`_ of the
-                dataset.
-
-            rois (int): the number of ROIs to be used for parcellation. 
-            Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}
-
-            path_to_data: Path where the data to be stored and processed.
-
-            n_jobs: the number of jobs to process the data in parallel.
-
-            transform (callable, optional): A function/transform that takes in an
-                :obj:`torch_geometric.data.Data` object and returns a transformed
-                version. The data object will be transformed before every access.
-                (default: :obj:`None`)
-            pre_transform (callable, optional): A function/transform that takes in
-                an :obj:`torch_geometric.data.Data` object and returns a
-                transformed version. The data object will be transformed before
-                being saved to disk. (default: :obj:`None`)
-            pre_filter (callable, optional): A function that takes in an
-                :obj:`torch_geometric.data.Data` object and returns a boolean
-                value, indicating whether the data object should be included in the
-                final dataset. (default: :obj:`None`)
-            
-            return: Pytroch geometric dataset with four classes: [0] - gender, [1]-age, [2]- working memory and [3] -fluid intelligence 
-        """
+    
     def __init__(self, root,name,n_rois, threshold,path_to_data,n_jobs,s3, transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.target_path,self.n_jobs,self.s3 = root, name,n_rois,threshold,path_to_data,n_jobs,s3
         super().__init__(root, transform, pre_transform, pre_filter)
@@ -1001,40 +787,7 @@ class Brain_connectome_Rest_Download(InMemoryDataset):
 
 
 class Brain_connectome_Activity_Download(InMemoryDataset):
-    r"""
-    Graph-based neuroimaging benchmark datasets,
-
-
-    Args:
-        root (str): Root directory where the dataset should be saved.
-
-        name (str): The `name
-            <https://anwar-said.github.io/anwarsaid/neurograph.html/>`_ of the
-            dataset.
-
-        rois (int): the number of ROIs to be used for parcellation. 
-        Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}
-
-        path_to_data: Path to the fMRI data.
-
-        n_jobs: the number of jobs to process the data in parallel.
-
-        transform (callable, optional): A function/transform that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a transformed
-            version. The data object will be transformed before every access.
-            (default: :obj:`None`)
-        pre_transform (callable, optional): A function/transform that takes in
-            an :obj:`torch_geometric.data.Data` object and returns a
-            transformed version. The data object will be transformed before
-            being saved to disk. (default: :obj:`None`)
-        pre_filter (callable, optional): A function that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a boolean
-            value, indicating whether the data object should be included in the
-            final dataset. (default: :obj:`None`)
-        
-        return: Pytroch geometric dataset with activity as class
-    """
-
+    
     def __init__(self, root, dataset_name,n_rois, threshold,path_to_data,n_jobs,s3,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.target_path,self.n_jobs,self.s3 = root, dataset_name,n_rois,threshold,path_to_data,n_jobs,s3
         super().__init__(root, transform, pre_transform, pre_filter)

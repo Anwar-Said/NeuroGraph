@@ -5,31 +5,22 @@ import torch
 import zipfile
 
 class NeuroGraphStatic(InMemoryDataset):
-
-    r"""
+    """
     Graph-based neuroimaging benchmark datasets, e.g.,
     :obj:`"HCPGender"`, :obj:`"HCPAge"`, :obj:`"HCPActivity"`,
     :obj:`"HCP-WM"`, or :obj:`"HCP-FI"`
 
     Args:
         root (str): Root directory where the dataset should be saved.
-        name (str): The `name
-            <https://anwar-said.github.io/anwarsaid/neurograph.html/>`_ of the
-            dataset.
-        transform (callable, optional): A function/transform that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a transformed
-            version. The data object will be transformed before every access.
-            (default: :obj:`None`)
-        pre_transform (callable, optional): A function/transform that takes in
-            an :obj:`torch_geometric.data.Data` object and returns a
-            transformed version. The data object will be transformed before
-            being saved to disk. (default: :obj:`None`)
-        pre_filter (callable, optional): A function that takes in an
-            :obj:`torch_geometric.data.Data` object and returns a boolean
-            value, indicating whether the data object should be included in the
-            final dataset. (default: :obj:`None`)
-        return: Pytorch geometric dataset
+        name (str): The name of the dataset.
+        transform (callable, optional): A function/transform that takes in an :obj:`torch_geometric.data.Data` object and returns a transformed version. The data object will be transformed before every access. (default: :obj:`None`)
+        pre_transform (callable, optional): A function/transform that takes in an :obj:`torch_geometric.data.Data` object and returns a transformed version. The data object will be transformed before being saved to disk. (default: :obj:`None`)
+        pre_filter (callable, optional): A function that takes in an :obj:`torch_geometric.data.Data` object and returns a boolean value, indicating whether the data object should be included in the final dataset. (default: :obj:`None`)
+        
+    Returns:
+        PyTorch Geometric dataset
     """
+
 
     def __init__(self, root, dataset_name,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.name = root, dataset_name
@@ -98,21 +89,19 @@ class NeuroGraphStatic(InMemoryDataset):
         torch.save((data, slices), self.processed_paths[0])
        
 class NeuroGraphDynamic():
-
-    r"""
-    Graph-based neuroimaging benchmark datasets, *.e.g.*,
-    :obj:`"DynHCPGender"`, :obj:`"DynHCPAge"`, :obj:`"DynHCPActivity"`,
-    :obj:`"DynHCP-WM"`, or :obj:`"DynHCP-FI"`
-
-
-    Args:
-        root (str): Root directory where the dataset should be saved.
-        name (str): The `name
-            <https://anwar-said.github.io/anwarsaid/neurograph.html/>`_ of the
-            dataset.
-        
-        return: a list of graphs in pyg format. Each graph has dynamic graphs batched in pyg batch 
     """
+        Graph-based neuroimaging benchmark datasets, e.g.,
+        :obj:`"DynHCPGender"`, :obj:`"DynHCPAge"`, :obj:`"DynHCPActivity"`,
+        :obj:`"DynHCP-WM"`, or :obj:`"DynHCP-FI"`
+
+        Args:
+            root (str): Root directory where the dataset should be saved.
+            name (str): The name of the dataset.
+
+        Returns:
+            list: A list of graphs in PyTorch Geometric (pyg) format. Each graph has dynamic graphs batched in pyg batch.
+    """
+
 
     def __init__(self,root, name):
         self.root = root

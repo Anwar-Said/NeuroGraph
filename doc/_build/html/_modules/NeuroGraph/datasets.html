@@ -40,9 +40,21 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">NeuroGraph:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NeuroGraph.html">NeuroGraph package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loading Benchmarks:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../datasets.html">Load Benchmark datasets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Preprocessing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocess.html">NeuroGraph Preprocessing Functionalities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utilities:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../utils.html">NeuroGraph Utilities</a></li>
 </ul>
 
         </div>
@@ -77,31 +89,22 @@
 <span class="kn">import</span> <span class="nn">zipfile</span>
 
 <div class="viewcode-block" id="NeuroGraphStatic"><a class="viewcode-back" href="../../datasets.html#NeuroGraph.datasets.NeuroGraphStatic">[docs]</a><span class="k">class</span> <span class="nc">NeuroGraphStatic</span><span class="p">(</span><span class="n">InMemoryDataset</span><span class="p">):</span>
-
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Graph-based neuroimaging benchmark datasets, e.g.,</span>
 <span class="sd">    :obj:`&quot;HCPGender&quot;`, :obj:`&quot;HCPAge&quot;`, :obj:`&quot;HCPActivity&quot;`,</span>
 <span class="sd">    :obj:`&quot;HCP-WM&quot;`, or :obj:`&quot;HCP-FI&quot;`</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        root (str): Root directory where the dataset should be saved.</span>
-<span class="sd">        name (str): The `name</span>
-<span class="sd">            &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the</span>
-<span class="sd">            dataset.</span>
-<span class="sd">        transform (callable, optional): A function/transform that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a transformed</span>
-<span class="sd">            version. The data object will be transformed before every access.</span>
-<span class="sd">            (default: :obj:`None`)</span>
-<span class="sd">        pre_transform (callable, optional): A function/transform that takes in</span>
-<span class="sd">            an :obj:`torch_geometric.data.Data` object and returns a</span>
-<span class="sd">            transformed version. The data object will be transformed before</span>
-<span class="sd">            being saved to disk. (default: :obj:`None`)</span>
-<span class="sd">        pre_filter (callable, optional): A function that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a boolean</span>
-<span class="sd">            value, indicating whether the data object should be included in the</span>
-<span class="sd">            final dataset. (default: :obj:`None`)</span>
-<span class="sd">        return: Pytorch geometric dataset</span>
+<span class="sd">        name (str): The `name &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the dataset.</span>
+<span class="sd">        transform (callable, optional): A function/transform that takes in an :obj:`torch_geometric.data.Data` object and returns a transformed version. The data object will be transformed before every access. (default: :obj:`None`)</span>
+<span class="sd">        pre_transform (callable, optional): A function/transform that takes in an :obj:`torch_geometric.data.Data` object and returns a transformed version. The data object will be transformed before being saved to disk. (default: :obj:`None`)</span>
+<span class="sd">        pre_filter (callable, optional): A function that takes in an :obj:`torch_geometric.data.Data` object and returns a boolean value, indicating whether the data object should be included in the final dataset. (default: :obj:`None`)</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        PyTorch Geometric dataset</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">dataset_name</span>
@@ -170,21 +173,19 @@
         <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">slices</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">processed_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div></div>
        
 <div class="viewcode-block" id="NeuroGraphDynamic"><a class="viewcode-back" href="../../datasets.html#NeuroGraph.datasets.NeuroGraphDynamic">[docs]</a><span class="k">class</span> <span class="nc">NeuroGraphDynamic</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Graph-based neuroimaging benchmark datasets, e.g.,</span>
+<span class="sd">        :obj:`&quot;DynHCPGender&quot;`, :obj:`&quot;DynHCPAge&quot;`, :obj:`&quot;DynHCPActivity&quot;`,</span>
+<span class="sd">        :obj:`&quot;DynHCP-WM&quot;`, or :obj:`&quot;DynHCP-FI&quot;`</span>
 
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Graph-based neuroimaging benchmark datasets, *.e.g.*,</span>
-<span class="sd">    :obj:`&quot;DynHCPGender&quot;`, :obj:`&quot;DynHCPAge&quot;`, :obj:`&quot;DynHCPActivity&quot;`,</span>
-<span class="sd">    :obj:`&quot;DynHCP-WM&quot;`, or :obj:`&quot;DynHCP-FI&quot;`</span>
+<span class="sd">        Args:</span>
+<span class="sd">            root (str): Root directory where the dataset should be saved.</span>
+<span class="sd">            name (str): The `name &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the dataset.</span>
 
-
-<span class="sd">    Args:</span>
-<span class="sd">        root (str): Root directory where the dataset should be saved.</span>
-<span class="sd">        name (str): The `name</span>
-<span class="sd">            &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the</span>
-<span class="sd">            dataset.</span>
-<span class="sd">        </span>
-<span class="sd">        return: a list of graphs in pyg format. Each graph has dynamic graphs batched in pyg batch </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            list: A list of graphs in PyTorch Geometric (pyg) format. Each graph has dynamic graphs batched in pyg batch.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>

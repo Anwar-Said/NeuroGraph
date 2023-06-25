@@ -1,5 +1,5 @@
 NeuroGraph Preprocessing Functionalities
-==================================
+============================================================
 
 
 .. automodule:: NeuroGraph.preprocess

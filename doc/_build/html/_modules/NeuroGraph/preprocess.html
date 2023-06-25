@@ -40,11 +40,21 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">NeuroGraph:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NeuroGraph.html">NeuroGraph package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loading Benchmarks:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../datasets.html">Load Benchmark datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../utils.html">NeuroGraph Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Preprocessing:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../preprocess.html">NeuroGraph Preprocessing Functionalities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utilities:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../utils.html">NeuroGraph Utilities</a></li>
 </ul>
 
         </div>
@@ -341,39 +351,6 @@
 
 
 <div class="viewcode-block" id="Brain_connectome_Rest"><a class="viewcode-back" href="../../preprocess.html#NeuroGraph.preprocess.Brain_connectome_Rest">[docs]</a><span class="k">class</span> <span class="nc">Brain_connectome_Rest</span><span class="p">(</span><span class="n">InMemoryDataset</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Graph-based neuroimaging benchmark datasets,</span>
-
-
-<span class="sd">    Args:</span>
-<span class="sd">        root (str): Root directory where the dataset should be saved.</span>
-
-<span class="sd">        name (str): The `name</span>
-<span class="sd">            &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the</span>
-<span class="sd">            dataset.</span>
-
-<span class="sd">        rois (int): the number of ROIs to be used for parcellation. </span>
-<span class="sd">        Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}</span>
-
-<span class="sd">        path_to_data: Path to the fMRI data.</span>
-
-<span class="sd">        n_jobs: the number of jobs to process the data in parallel.</span>
-
-<span class="sd">        transform (callable, optional): A function/transform that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a transformed</span>
-<span class="sd">            version. The data object will be transformed before every access.</span>
-<span class="sd">            (default: :obj:`None`)</span>
-<span class="sd">        pre_transform (callable, optional): A function/transform that takes in</span>
-<span class="sd">            an :obj:`torch_geometric.data.Data` object and returns a</span>
-<span class="sd">            transformed version. The data object will be transformed before</span>
-<span class="sd">            being saved to disk. (default: :obj:`None`)</span>
-<span class="sd">        pre_filter (callable, optional): A function that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a boolean</span>
-<span class="sd">            value, indicating whether the data object should be included in the</span>
-<span class="sd">            final dataset. (default: :obj:`None`)</span>
-<span class="sd">        </span>
-<span class="sd">        return: Pytroch geometric dataset with four classes: [0] - gender, [1]-age, [2]- working memory and [3] -fluid intelligence </span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">n_rois</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span><span class="n">path_to_data</span><span class="p">,</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_name</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_rois</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">path_to_data</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span><span class="n">n_rois</span><span class="p">,</span><span class="n">threshold</span><span class="p">,</span><span class="n">path_to_data</span><span class="p">,</span><span class="n">n_jobs</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">pre_transform</span><span class="p">,</span> <span class="n">pre_filter</span><span class="p">)</span>
@@ -497,36 +474,7 @@
         <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">slices</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">processed_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div></div>
 
 <div class="viewcode-block" id="Gender_Dataset"><a class="viewcode-back" href="../../preprocess.html#NeuroGraph.preprocess.Gender_Dataset">[docs]</a><span class="k">class</span> <span class="nc">Gender_Dataset</span><span class="p">(</span><span class="n">InMemoryDataset</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Graph-based neuroimaging dataset,</span>
-
-
-<span class="sd">    Args:</span>
-<span class="sd">        root (str): Root directory where the dataset should be saved.</span>
-
-<span class="sd">        name (str): The `name</span>
-<span class="sd">            &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the</span>
-<span class="sd">            dataset.</span>
-
-<span class="sd">        </span>
-
-<span class="sd">        dataset: Pyg dataset obtained from Brain_connectome_Rest class </span>
-
-<span class="sd">        transform (callable, optional): A function/transform that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a transformed</span>
-<span class="sd">            version. The data object will be transformed before every access.</span>
-<span class="sd">            (default: :obj:`None`)</span>
-<span class="sd">        pre_transform (callable, optional): A function/transform that takes in</span>
-<span class="sd">            an :obj:`torch_geometric.data.Data` object and returns a</span>
-<span class="sd">            transformed version. The data object will be transformed before</span>
-<span class="sd">            being saved to disk. (default: :obj:`None`)</span>
-<span class="sd">        pre_filter (callable, optional): A function that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a boolean</span>
-<span class="sd">            value, indicating whether the data object should be included in the</span>
-<span class="sd">            final dataset. (default: :obj:`None`)</span>
-<span class="sd">        </span>
-<span class="sd">        return: Pytroch geometric dataset</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+   
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span><span class="n">dataset_name</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span><span class="n">dataset</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">pre_transform</span><span class="p">,</span> <span class="n">pre_filter</span><span class="p">)</span>
@@ -556,36 +504,7 @@
 
 
 <div class="viewcode-block" id="Age_Dataset"><a class="viewcode-back" href="../../preprocess.html#NeuroGraph.preprocess.Age_Dataset">[docs]</a><span class="k">class</span> <span class="nc">Age_Dataset</span><span class="p">(</span><span class="n">InMemoryDataset</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Graph-based neuroimaging dataset,</span>
-
-
-<span class="sd">    Args:</span>
-<span class="sd">        root (str): Root directory where the dataset should be saved.</span>
-
-<span class="sd">        name (str): The `name</span>
-<span class="sd">            &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the</span>
-<span class="sd">            dataset.</span>
-
-<span class="sd">        </span>
-
-<span class="sd">        dataset: Pyg dataset obtained from Brain_connectome_Rest class </span>
-
-<span class="sd">        transform (callable, optional): A function/transform that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a transformed</span>
-<span class="sd">            version. The data object will be transformed before every access.</span>
-<span class="sd">            (default: :obj:`None`)</span>
-<span class="sd">        pre_transform (callable, optional): A function/transform that takes in</span>
-<span class="sd">            an :obj:`torch_geometric.data.Data` object and returns a</span>
-<span class="sd">            transformed version. The data object will be transformed before</span>
-<span class="sd">            being saved to disk. (default: :obj:`None`)</span>
-<span class="sd">        pre_filter (callable, optional): A function that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a boolean</span>
-<span class="sd">            value, indicating whether the data object should be included in the</span>
-<span class="sd">            final dataset. (default: :obj:`None`)</span>
-<span class="sd">        </span>
-<span class="sd">        return: Pytroch geometric dataset</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span><span class="n">dataset_name</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span><span class="n">dataset</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">pre_transform</span><span class="p">,</span> <span class="n">pre_filter</span><span class="p">)</span>
@@ -615,36 +534,7 @@
         <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">slices</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">processed_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div></div>
 
 <div class="viewcode-block" id="WM_Dataset"><a class="viewcode-back" href="../../preprocess.html#NeuroGraph.preprocess.WM_Dataset">[docs]</a><span class="k">class</span> <span class="nc">WM_Dataset</span><span class="p">(</span><span class="n">InMemoryDataset</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Graph-based neuroimaging dataset,</span>
-
-
-<span class="sd">    Args:</span>
-<span class="sd">        root (str): Root directory where the dataset should be saved.</span>
-
-<span class="sd">        name (str): The `name</span>
-<span class="sd">            &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the</span>
-<span class="sd">            dataset.</span>
-
-<span class="sd">        </span>
-
-<span class="sd">        dataset: Pyg dataset obtained from Brain_connectome_Rest class </span>
-
-<span class="sd">        transform (callable, optional): A function/transform that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a transformed</span>
-<span class="sd">            version. The data object will be transformed before every access.</span>
-<span class="sd">            (default: :obj:`None`)</span>
-<span class="sd">        pre_transform (callable, optional): A function/transform that takes in</span>
-<span class="sd">            an :obj:`torch_geometric.data.Data` object and returns a</span>
-<span class="sd">            transformed version. The data object will be transformed before</span>
-<span class="sd">            being saved to disk. (default: :obj:`None`)</span>
-<span class="sd">        pre_filter (callable, optional): A function that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a boolean</span>
-<span class="sd">            value, indicating whether the data object should be included in the</span>
-<span class="sd">            final dataset. (default: :obj:`None`)</span>
-<span class="sd">        </span>
-<span class="sd">        return: Pytroch geometric dataset with working memory values  as labels</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+    
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span><span class="n">dataset_name</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span><span class="n">dataset</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">pre_transform</span><span class="p">,</span> <span class="n">pre_filter</span><span class="p">)</span>
@@ -678,36 +568,7 @@
         <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">slices</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">processed_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div></div>
 
 <div class="viewcode-block" id="FI_Dataset"><a class="viewcode-back" href="../../preprocess.html#NeuroGraph.preprocess.FI_Dataset">[docs]</a><span class="k">class</span> <span class="nc">FI_Dataset</span><span class="p">(</span><span class="n">InMemoryDataset</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Graph-based neuroimaging dataset,</span>
-
-
-<span class="sd">    Args:</span>
-<span class="sd">        root (str): Root directory where the dataset should be saved.</span>
-
-<span class="sd">        name (str): The `name</span>
-<span class="sd">            &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the</span>
-<span class="sd">            dataset.</span>
-
-<span class="sd">        </span>
-
-<span class="sd">        dataset: Pyg dataset obtained from Brain_connectome_Rest class </span>
-
-<span class="sd">        transform (callable, optional): A function/transform that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a transformed</span>
-<span class="sd">            version. The data object will be transformed before every access.</span>
-<span class="sd">            (default: :obj:`None`)</span>
-<span class="sd">        pre_transform (callable, optional): A function/transform that takes in</span>
-<span class="sd">            an :obj:`torch_geometric.data.Data` object and returns a</span>
-<span class="sd">            transformed version. The data object will be transformed before</span>
-<span class="sd">            being saved to disk. (default: :obj:`None`)</span>
-<span class="sd">        pre_filter (callable, optional): A function that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a boolean</span>
-<span class="sd">            value, indicating whether the data object should be included in the</span>
-<span class="sd">            final dataset. (default: :obj:`None`)</span>
-<span class="sd">        </span>
-<span class="sd">        return: Pytroch geometric dataset with Fluid Intelligence values as labels</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+    
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span><span class="n">dataset_name</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span><span class="n">dataset</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">pre_transform</span><span class="p">,</span> <span class="n">pre_filter</span><span class="p">)</span>
@@ -743,40 +604,7 @@
         <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">slices</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">processed_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div></div>
 
 <div class="viewcode-block" id="Brain_connectome_Activity"><a class="viewcode-back" href="../../preprocess.html#NeuroGraph.preprocess.Brain_connectome_Activity">[docs]</a><span class="k">class</span> <span class="nc">Brain_connectome_Activity</span><span class="p">(</span><span class="n">InMemoryDataset</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Graph-based neuroimaging benchmark datasets,</span>
-
-
-<span class="sd">    Args:</span>
-<span class="sd">        root (str): Root directory where the dataset should be saved.</span>
-
-<span class="sd">        name (str): The `name</span>
-<span class="sd">            &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the</span>
-<span class="sd">            dataset.</span>
-
-<span class="sd">        rois (int): the number of ROIs to be used for parcellation. </span>
-<span class="sd">        Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}</span>
-
-<span class="sd">        path_to_data: Path to the fMRI data.</span>
-
-<span class="sd">        n_jobs: the number of jobs to process the data in parallel.</span>
-
-<span class="sd">        transform (callable, optional): A function/transform that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a transformed</span>
-<span class="sd">            version. The data object will be transformed before every access.</span>
-<span class="sd">            (default: :obj:`None`)</span>
-<span class="sd">        pre_transform (callable, optional): A function/transform that takes in</span>
-<span class="sd">            an :obj:`torch_geometric.data.Data` object and returns a</span>
-<span class="sd">            transformed version. The data object will be transformed before</span>
-<span class="sd">            being saved to disk. (default: :obj:`None`)</span>
-<span class="sd">        pre_filter (callable, optional): A function that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a boolean</span>
-<span class="sd">            value, indicating whether the data object should be included in the</span>
-<span class="sd">            final dataset. (default: :obj:`None`)</span>
-<span class="sd">        </span>
-<span class="sd">        return: Pytroch geometric dataset with activity as class</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
+    
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span><span class="n">n_rois</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span><span class="n">path_to_data</span><span class="p">,</span><span class="n">n_jobs</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_name</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_rois</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">path_to_data</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span><span class="n">n_rois</span><span class="p">,</span><span class="n">threshold</span><span class="p">,</span><span class="n">path_to_data</span><span class="p">,</span><span class="n">n_jobs</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">pre_transform</span><span class="p">,</span> <span class="n">pre_filter</span><span class="p">)</span>
@@ -912,39 +740,7 @@
 
 
 <div class="viewcode-block" id="Brain_connectome_Rest_Download"><a class="viewcode-back" href="../../preprocess.html#NeuroGraph.preprocess.Brain_connectome_Rest_Download">[docs]</a><span class="k">class</span> <span class="nc">Brain_connectome_Rest_Download</span><span class="p">(</span><span class="n">InMemoryDataset</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Graph-based neuroimaging benchmark datasets crawling from HCP S3 bucket,</span>
-
-
-<span class="sd">        Args:</span>
-<span class="sd">            root (str): Root directory where the dataset should be saved.</span>
-
-<span class="sd">            name (str): The `name</span>
-<span class="sd">                &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the</span>
-<span class="sd">                dataset.</span>
-
-<span class="sd">            rois (int): the number of ROIs to be used for parcellation. </span>
-<span class="sd">            Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}</span>
-
-<span class="sd">            path_to_data: Path where the data to be stored and processed.</span>
-
-<span class="sd">            n_jobs: the number of jobs to process the data in parallel.</span>
-
-<span class="sd">            transform (callable, optional): A function/transform that takes in an</span>
-<span class="sd">                :obj:`torch_geometric.data.Data` object and returns a transformed</span>
-<span class="sd">                version. The data object will be transformed before every access.</span>
-<span class="sd">                (default: :obj:`None`)</span>
-<span class="sd">            pre_transform (callable, optional): A function/transform that takes in</span>
-<span class="sd">                an :obj:`torch_geometric.data.Data` object and returns a</span>
-<span class="sd">                transformed version. The data object will be transformed before</span>
-<span class="sd">                being saved to disk. (default: :obj:`None`)</span>
-<span class="sd">            pre_filter (callable, optional): A function that takes in an</span>
-<span class="sd">                :obj:`torch_geometric.data.Data` object and returns a boolean</span>
-<span class="sd">                value, indicating whether the data object should be included in the</span>
-<span class="sd">                final dataset. (default: :obj:`None`)</span>
-<span class="sd">            </span>
-<span class="sd">            return: Pytroch geometric dataset with four classes: [0] - gender, [1]-age, [2]- working memory and [3] -fluid intelligence </span>
-<span class="sd">        &quot;&quot;&quot;</span>
+    
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">n_rois</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span><span class="n">path_to_data</span><span class="p">,</span><span class="n">n_jobs</span><span class="p">,</span><span class="n">s3</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_name</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_rois</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">target_path</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">s3</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span><span class="n">n_rois</span><span class="p">,</span><span class="n">threshold</span><span class="p">,</span><span class="n">path_to_data</span><span class="p">,</span><span class="n">n_jobs</span><span class="p">,</span><span class="n">s3</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">pre_transform</span><span class="p">,</span> <span class="n">pre_filter</span><span class="p">)</span>
@@ -1075,40 +871,7 @@
 
 
 <div class="viewcode-block" id="Brain_connectome_Activity_Download"><a class="viewcode-back" href="../../preprocess.html#NeuroGraph.preprocess.Brain_connectome_Activity_Download">[docs]</a><span class="k">class</span> <span class="nc">Brain_connectome_Activity_Download</span><span class="p">(</span><span class="n">InMemoryDataset</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Graph-based neuroimaging benchmark datasets,</span>
-
-
-<span class="sd">    Args:</span>
-<span class="sd">        root (str): Root directory where the dataset should be saved.</span>
-
-<span class="sd">        name (str): The `name</span>
-<span class="sd">            &lt;https://anwar-said.github.io/anwarsaid/neurograph.html/&gt;`_ of the</span>
-<span class="sd">            dataset.</span>
-
-<span class="sd">        rois (int): the number of ROIs to be used for parcellation. </span>
-<span class="sd">        Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}</span>
-
-<span class="sd">        path_to_data: Path to the fMRI data.</span>
-
-<span class="sd">        n_jobs: the number of jobs to process the data in parallel.</span>
-
-<span class="sd">        transform (callable, optional): A function/transform that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a transformed</span>
-<span class="sd">            version. The data object will be transformed before every access.</span>
-<span class="sd">            (default: :obj:`None`)</span>
-<span class="sd">        pre_transform (callable, optional): A function/transform that takes in</span>
-<span class="sd">            an :obj:`torch_geometric.data.Data` object and returns a</span>
-<span class="sd">            transformed version. The data object will be transformed before</span>
-<span class="sd">            being saved to disk. (default: :obj:`None`)</span>
-<span class="sd">        pre_filter (callable, optional): A function that takes in an</span>
-<span class="sd">            :obj:`torch_geometric.data.Data` object and returns a boolean</span>
-<span class="sd">            value, indicating whether the data object should be included in the</span>
-<span class="sd">            final dataset. (default: :obj:`None`)</span>
-<span class="sd">        </span>
-<span class="sd">        return: Pytroch geometric dataset with activity as class</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
+    
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span><span class="n">n_rois</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span><span class="n">path_to_data</span><span class="p">,</span><span class="n">n_jobs</span><span class="p">,</span><span class="n">s3</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_name</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_rois</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">target_path</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">s3</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span><span class="n">n_rois</span><span class="p">,</span><span class="n">threshold</span><span class="p">,</span><span class="n">path_to_data</span><span class="p">,</span><span class="n">n_jobs</span><span class="p">,</span><span class="n">s3</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">pre_transform</span><span class="p">,</span> <span class="n">pre_filter</span><span class="p">)</span>
