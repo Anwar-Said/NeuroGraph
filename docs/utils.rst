@@ -1,8 +1,8 @@
-NeuroGraph Preprocessing Functionalities
+NeuroGraph Utilities
 ==================================
 
 
-.. automodule:: NeuroGraph.preprocess
+.. automodule:: NeuroGraph.utils
    :members:
    :undoc-members:
    :show-inheritance:

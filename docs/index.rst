@@ -1,5 +1,5 @@
 .. NeuroGraph documentation master file, created by
-   sphinx-quickstart on Tue Jun 20 13:54:17 2023.
+   sphinx-quickstart on Sun Jun 25 13:46:36 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -8,28 +8,26 @@ Welcome to NeuroGraph's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Install NeuroGraph:
+   :caption: Loading Benchmarks:
 
-   INSTALL
+   datasets
+
+
 .. toctree::
    :maxdepth: 2
-   :caption: GET STARTED:
+   :caption: Preprocessing:
 
-   GET STARTED
    
-   
-.. toctree::
-   :maxdepth: 2
-   :caption: Benchmarks Loading:
-
-   neurograph
-.. toctree::
-   :maxdepth: 2
-   :caption: Preprocesing:
-
-   preprocess_fmri
    preprocess
-   
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Utilities:
+
+   utils
+
+
 Indices and tables
 ==================
 

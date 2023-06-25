@@ -2,7 +2,6 @@ NeuroGraph
 ==========
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
-   .. GET STARTED
-   .. neurograph
+   NeuroGraph

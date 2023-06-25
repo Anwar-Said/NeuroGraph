@@ -1,8 +1,8 @@
-NeuroGraph Preprocessing Functionalities
+Load Benchmark datasets
 ==================================
 
 
-.. automodule:: NeuroGraph.preprocess
+.. automodule:: NeuroGraph.datasets
    :members:
    :undoc-members:
    :show-inheritance:
