@@ -1,0 +1,10 @@
+NeuroGraph.NeuroGraph.GET STARTED package
+=========================================
+
+Module contents
+---------------
+
+.. automodule:: NeuroGraph.NeuroGraph.GET STARTED
+   :members:
+   :undoc-members:
+   :show-inheritance:
