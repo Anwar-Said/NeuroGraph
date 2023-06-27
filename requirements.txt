@@ -4,4 +4,3 @@ pandas
 torch
 torch_geometric
 networkx==2.6
-sphinx-copybutton
