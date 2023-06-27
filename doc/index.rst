@@ -8,6 +8,12 @@ Welcome to NeuroGraph's documentation!
 
 .. toctree::
    :maxdepth: 2
+   :caption: NeuroGraph:
+
+   NeuroGraph
+
+.. toctree::
+   :maxdepth: 2
    :caption: Installations:
 
    install
