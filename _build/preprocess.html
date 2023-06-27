@@ -7,6 +7,7 @@
   <title>NeuroGraph Preprocessing Functionalities &mdash; NeuroGraph 1.0.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -17,6 +18,8 @@
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -43,7 +46,21 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Loading Benchmarks:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">NeuroGraph:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="NeuroGraph.html">Demographics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeuroGraph.html#mental-states">Mental States</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeuroGraph.html#congnitive-traits">Congnitive Traits</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">Intorduction by Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loading Benchmarks:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Load Benchmark datasets</a></li>
 </ul>
@@ -149,11 +166,6 @@
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Age_Dataset">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Age_Dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Age_Dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Age_Dataset" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryDataset</span></code></p>
-<p>_summary_</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>InMemoryDataset (_type_): _description_</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Age_Dataset.process">
 <span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Age_Dataset.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Age_Dataset.process" title="Permalink to this definition"></a></dt>
@@ -173,35 +185,6 @@ must be present in order to skip processing.</p>
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Brain_connectome_Activity">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Brain_connectome_Activity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rois</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_to_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Brain_connectome_Activity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Brain_connectome_Activity" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryDataset</span></code></p>
-<p>Graph-based neuroimaging benchmark datasets,</p>
-<dl>
-<dt>Args:</dt><dd><p>root (str): Root directory where the dataset should be saved.</p>
-<dl class="simple">
-<dt>name (str): The <a href="#id1"><span class="problematic" id="id2">`</span></a>name</dt><dd><p>&lt;<a class="reference external" href="https://anwar-said.github.io/anwarsaid/neurograph.html/">https://anwar-said.github.io/anwarsaid/neurograph.html/</a>&gt;`_ of the
-dataset.</p>
-</dd>
-</dl>
-<p>rois (int): the number of ROIs to be used for parcellation. 
-Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}</p>
-<p>path_to_data: Path to the fMRI data.</p>
-<p>n_jobs: the number of jobs to process the data in parallel.</p>
-<dl class="simple">
-<dt>transform (callable, optional): A function/transform that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a transformed
-version. The data object will be transformed before every access.
-(default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_transform (callable, optional): A function/transform that takes in</dt><dd><p>an <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a
-transformed version. The data object will be transformed before
-being saved to disk. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_filter (callable, optional): A function that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a boolean
-value, indicating whether the data object should be included in the
-final dataset. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-</dl>
-<p>return: Pytroch geometric dataset with activity as class</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Brain_connectome_Activity.construct_adj_postive_perc">
 <span class="sig-name descname"><span class="pre">construct_adj_postive_perc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Brain_connectome_Activity.construct_adj_postive_perc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Brain_connectome_Activity.construct_adj_postive_perc" title="Permalink to this definition"></a></dt>
@@ -245,35 +228,6 @@ must be present in order to skip processing.</p>
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Brain_connectome_Activity_Download">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Brain_connectome_Activity_Download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rois</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_to_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Brain_connectome_Activity_Download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Brain_connectome_Activity_Download" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryDataset</span></code></p>
-<p>Graph-based neuroimaging benchmark datasets,</p>
-<dl>
-<dt>Args:</dt><dd><p>root (str): Root directory where the dataset should be saved.</p>
-<dl class="simple">
-<dt>name (str): The <a href="#id3"><span class="problematic" id="id4">`</span></a>name</dt><dd><p>&lt;<a class="reference external" href="https://anwar-said.github.io/anwarsaid/neurograph.html/">https://anwar-said.github.io/anwarsaid/neurograph.html/</a>&gt;`_ of the
-dataset.</p>
-</dd>
-</dl>
-<p>rois (int): the number of ROIs to be used for parcellation. 
-Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}</p>
-<p>path_to_data: Path to the fMRI data.</p>
-<p>n_jobs: the number of jobs to process the data in parallel.</p>
-<dl class="simple">
-<dt>transform (callable, optional): A function/transform that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a transformed
-version. The data object will be transformed before every access.
-(default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_transform (callable, optional): A function/transform that takes in</dt><dd><p>an <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a
-transformed version. The data object will be transformed before
-being saved to disk. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_filter (callable, optional): A function that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a boolean
-value, indicating whether the data object should be included in the
-final dataset. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-</dl>
-<p>return: Pytroch geometric dataset with activity as class</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Brain_connectome_Activity_Download.construct_Adj_postive_perc">
 <span class="sig-name descname"><span class="pre">construct_Adj_postive_perc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Brain_connectome_Activity_Download.construct_Adj_postive_perc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Brain_connectome_Activity_Download.construct_Adj_postive_perc" title="Permalink to this definition"></a></dt>
@@ -316,35 +270,6 @@ must be present in order to skip processing.</p>
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Brain_connectome_Rest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Brain_connectome_Rest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rois</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_to_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Brain_connectome_Rest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Brain_connectome_Rest" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryDataset</span></code></p>
-<p>Graph-based neuroimaging benchmark datasets,</p>
-<dl>
-<dt>Args:</dt><dd><p>root (str): Root directory where the dataset should be saved.</p>
-<dl class="simple">
-<dt>name (str): The <a href="#id5"><span class="problematic" id="id6">`</span></a>name</dt><dd><p>&lt;<a class="reference external" href="https://anwar-said.github.io/anwarsaid/neurograph.html/">https://anwar-said.github.io/anwarsaid/neurograph.html/</a>&gt;`_ of the
-dataset.</p>
-</dd>
-</dl>
-<p>rois (int): the number of ROIs to be used for parcellation. 
-Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}</p>
-<p>path_to_data: Path to the fMRI data.</p>
-<p>n_jobs: the number of jobs to process the data in parallel.</p>
-<dl class="simple">
-<dt>transform (callable, optional): A function/transform that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a transformed
-version. The data object will be transformed before every access.
-(default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_transform (callable, optional): A function/transform that takes in</dt><dd><p>an <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a
-transformed version. The data object will be transformed before
-being saved to disk. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_filter (callable, optional): A function that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a boolean
-value, indicating whether the data object should be included in the
-final dataset. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-</dl>
-<p>return: Pytroch geometric dataset with four classes: [0] - gender, [1]-age, [2]- working memory and [3] -fluid intelligence</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Brain_connectome_Rest.construct_adj_postive_perc">
 <span class="sig-name descname"><span class="pre">construct_adj_postive_perc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Brain_connectome_Rest.construct_adj_postive_perc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Brain_connectome_Rest.construct_adj_postive_perc" title="Permalink to this definition"></a></dt>
@@ -388,35 +313,6 @@ must be present in order to skip processing.</p>
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Brain_connectome_Rest_Download">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Brain_connectome_Rest_Download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rois</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_to_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Brain_connectome_Rest_Download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Brain_connectome_Rest_Download" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryDataset</span></code></p>
-<p>Graph-based neuroimaging benchmark datasets crawling from HCP S3 bucket,</p>
-<dl>
-<dt>Args:</dt><dd><p>root (str): Root directory where the dataset should be saved.</p>
-<dl class="simple">
-<dt>name (str): The <a href="#id7"><span class="problematic" id="id8">`</span></a>name</dt><dd><p>&lt;<a class="reference external" href="https://anwar-said.github.io/anwarsaid/neurograph.html/">https://anwar-said.github.io/anwarsaid/neurograph.html/</a>&gt;`_ of the
-dataset.</p>
-</dd>
-</dl>
-<p>rois (int): the number of ROIs to be used for parcellation. 
-Options are: {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}</p>
-<p>path_to_data: Path where the data to be stored and processed.</p>
-<p>n_jobs: the number of jobs to process the data in parallel.</p>
-<dl class="simple">
-<dt>transform (callable, optional): A function/transform that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a transformed
-version. The data object will be transformed before every access.
-(default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_transform (callable, optional): A function/transform that takes in</dt><dd><p>an <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a
-transformed version. The data object will be transformed before
-being saved to disk. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_filter (callable, optional): A function that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a boolean
-value, indicating whether the data object should be included in the
-final dataset. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-</dl>
-<p>return: Pytroch geometric dataset with four classes: [0] - gender, [1]-age, [2]- working memory and [3] -fluid intelligence</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Brain_connectome_Rest_Download.construct_Adj_postive_perc">
 <span class="sig-name descname"><span class="pre">construct_Adj_postive_perc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Brain_connectome_Rest_Download.construct_Adj_postive_perc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Brain_connectome_Rest_Download.construct_Adj_postive_perc" title="Permalink to this definition"></a></dt>
@@ -514,32 +410,6 @@ if None, consider the whole timeseries object</p>
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.FI_Dataset">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FI_Dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#FI_Dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.FI_Dataset" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryDataset</span></code></p>
-<p>Graph-based neuroimaging dataset,</p>
-<dl>
-<dt>Args:</dt><dd><p>root (str): Root directory where the dataset should be saved.</p>
-<dl class="simple">
-<dt>name (str): The <a href="#id9"><span class="problematic" id="id10">`</span></a>name</dt><dd><p>&lt;<a class="reference external" href="https://anwar-said.github.io/anwarsaid/neurograph.html/">https://anwar-said.github.io/anwarsaid/neurograph.html/</a>&gt;`_ of the
-dataset.</p>
-</dd>
-</dl>
-<p>dataset: Pyg dataset obtained from Brain_connectome_Rest class</p>
-<dl class="simple">
-<dt>transform (callable, optional): A function/transform that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a transformed
-version. The data object will be transformed before every access.
-(default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_transform (callable, optional): A function/transform that takes in</dt><dd><p>an <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a
-transformed version. The data object will be transformed before
-being saved to disk. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_filter (callable, optional): A function that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a boolean
-value, indicating whether the data object should be included in the
-final dataset. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-</dl>
-<p>return: Pytroch geometric dataset with Fluid Intelligence values as labels</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.FI_Dataset.process">
 <span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#FI_Dataset.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.FI_Dataset.process" title="Permalink to this definition"></a></dt>
@@ -559,32 +429,6 @@ must be present in order to skip processing.</p>
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Gender_Dataset">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Gender_Dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Gender_Dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Gender_Dataset" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryDataset</span></code></p>
-<p>Graph-based neuroimaging dataset,</p>
-<dl>
-<dt>Args:</dt><dd><p>root (str): Root directory where the dataset should be saved.</p>
-<dl class="simple">
-<dt>name (str): The <a href="#id11"><span class="problematic" id="id12">`</span></a>name</dt><dd><p>&lt;<a class="reference external" href="https://anwar-said.github.io/anwarsaid/neurograph.html/">https://anwar-said.github.io/anwarsaid/neurograph.html/</a>&gt;`_ of the
-dataset.</p>
-</dd>
-</dl>
-<p>dataset: Pyg dataset obtained from Brain_connectome_Rest class</p>
-<dl class="simple">
-<dt>transform (callable, optional): A function/transform that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a transformed
-version. The data object will be transformed before every access.
-(default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_transform (callable, optional): A function/transform that takes in</dt><dd><p>an <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a
-transformed version. The data object will be transformed before
-being saved to disk. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_filter (callable, optional): A function that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a boolean
-value, indicating whether the data object should be included in the
-final dataset. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-</dl>
-<p>return: Pytroch geometric dataset</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.Gender_Dataset.process">
 <span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#Gender_Dataset.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.Gender_Dataset.process" title="Permalink to this definition"></a></dt>
@@ -604,32 +448,6 @@ must be present in order to skip processing.</p>
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.WM_Dataset">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WM_Dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#WM_Dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.WM_Dataset" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryDataset</span></code></p>
-<p>Graph-based neuroimaging dataset,</p>
-<dl>
-<dt>Args:</dt><dd><p>root (str): Root directory where the dataset should be saved.</p>
-<dl class="simple">
-<dt>name (str): The <a href="#id13"><span class="problematic" id="id14">`</span></a>name</dt><dd><p>&lt;<a class="reference external" href="https://anwar-said.github.io/anwarsaid/neurograph.html/">https://anwar-said.github.io/anwarsaid/neurograph.html/</a>&gt;`_ of the
-dataset.</p>
-</dd>
-</dl>
-<p>dataset: Pyg dataset obtained from Brain_connectome_Rest class</p>
-<dl class="simple">
-<dt>transform (callable, optional): A function/transform that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a transformed
-version. The data object will be transformed before every access.
-(default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_transform (callable, optional): A function/transform that takes in</dt><dd><p>an <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a
-transformed version. The data object will be transformed before
-being saved to disk. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-<dt>pre_filter (callable, optional): A function that takes in an</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a boolean
-value, indicating whether the data object should be included in the
-final dataset. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
-</dd>
-</dl>
-<p>return: Pytroch geometric dataset with working memory values  as labels</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.preprocess.WM_Dataset.process">
 <span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/preprocess.html#WM_Dataset.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.preprocess.WM_Dataset.process" title="Permalink to this definition"></a></dt>

@@ -7,6 +7,7 @@
   <title>Load Benchmark datasets &mdash; NeuroGraph 1.0.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -17,11 +18,13 @@
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="NeuroGraph Preprocessing Functionalities" href="preprocess.html" />
-    <link rel="prev" title="Welcome to NeuroGraph’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Intorduction by Example" href="get_started.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,7 +46,21 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Loading Benchmarks:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">NeuroGraph:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="NeuroGraph.html">Demographics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeuroGraph.html#mental-states">Mental States</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeuroGraph.html#congnitive-traits">Congnitive Traits</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">Intorduction by Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loading Benchmarks:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Load Benchmark datasets</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#NeuroGraph.datasets.NeuroGraphDynamic"><code class="docutils literal notranslate"><span class="pre">NeuroGraphDynamic</span></code></a><ul>
@@ -102,6 +119,16 @@
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphDynamic">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NeuroGraphDynamic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphDynamic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphDynamic" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Graph-based neuroimaging benchmark datasets, e.g.,
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;DynHCPGender&quot;</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;DynHCPAge&quot;</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;DynHCPActivity&quot;</span></code>,
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;DynHCP-WM&quot;</span></code>, or <code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;DynHCP-FI&quot;</span></code></p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>root (str): Root directory where the dataset should be saved.
+name (str): The name of the dataset.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list of graphs in PyTorch Geometric (pyg) format. Each graph has dynamic graphs batched in pyg batch.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphDynamic.download">
 <span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphDynamic.download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphDynamic.download" title="Permalink to this definition"></a></dt>
@@ -118,6 +145,19 @@
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphStatic">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NeuroGraphStatic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphStatic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryDataset</span></code></p>
+<p>Graph-based neuroimaging benchmark datasets, e.g.,
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;HCPGender&quot;</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;HCPAge&quot;</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;HCPActivity&quot;</span></code>,
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;HCP-WM&quot;</span></code>, or <code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;HCP-FI&quot;</span></code></p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>root (str): Root directory where the dataset should be saved.
+name (str): The name of the dataset.
+transform (callable, optional): A function/transform that takes in an <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a transformed version. The data object will be transformed before every access. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)
+pre_transform (callable, optional): A function/transform that takes in an <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a transformed version. The data object will be transformed before being saved to disk. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)
+pre_filter (callable, optional): A function that takes in an <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> object and returns a boolean value, indicating whether the data object should be included in the final dataset. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p>
+</dd>
+<dt>Returns:</dt><dd><p>PyTorch Geometric dataset</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphStatic.download">
 <span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphStatic.download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.download" title="Permalink to this definition"></a></dt>
@@ -162,7 +202,7 @@ be present in order to skip downloading.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to NeuroGraph’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="get_started.html" class="btn btn-neutral float-left" title="Intorduction by Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="preprocess.html" class="btn btn-neutral float-right" title="NeuroGraph Preprocessing Functionalities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

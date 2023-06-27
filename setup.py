@@ -13,7 +13,8 @@ setup(
         'nilearn==0.10.1',
         'networkx==2.6',
         'pandas'
-        
+         'sphinx-copybutton'
+
     ],
     keywords = ['python','neuroimaging','graph machine learning'],
      classifiers=[
