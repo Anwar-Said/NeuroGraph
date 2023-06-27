@@ -32,6 +32,7 @@ def preprocess(fmri,regs, n_rois =1000):
             for t in range(fmri.shape[-1]):
                 roi_ts_mean.append(np.mean(fmri[:, :, :, t][bool_roi]))
             subcor_ts.append(np.array(roi_ts_mean))
+    
     Y = np.array(subcor_ts).T
     start = 1
     stop = Y.shape[0]
