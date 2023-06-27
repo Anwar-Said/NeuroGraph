@@ -1,6 +1,3 @@
-NeuroGraph package
-=============================
-
 NeuroGraph is a collection of graph-based neuroimaging datasets that span multiple categories of demographics, mental states and cognitive traits. The following provides an overview of these categories and their associated datasets.
 
 
