@@ -1,9 +1,9 @@
 import numpy as np
+import torch
 from nilearn.datasets import fetch_atlas_schaefer_2018
 from nilearn.image import load_img
 from nilearn.connectome import ConnectivityMeasure
 from scipy.stats import zscore
-import torch
 from torch_geometric.data import Data
 
 

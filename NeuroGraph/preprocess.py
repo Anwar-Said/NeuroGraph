@@ -8,21 +8,10 @@ from nilearn.image import load_img
 from nilearn.connectome import ConnectivityMeasure
 from scipy.stats import zscore
 import torch
-from torch_geometric.data import Data
+from torch_geometric.data import Data,InMemoryDataset
 from random import randrange
-
-from torch_geometric.data import Data, InMemoryDataset
-from torch_geometric.data import InMemoryDataset
-import os,glob
 import math
-# from nilearn.input_data import NiftiLabelsMasker
-from nilearn.image import load_img
-import pandas as pd
 import zipfile
-from torch_geometric.data import Data
-import os
-import pickle
-from scipy.stats import zscore
 from joblib import Parallel, delayed
 from tqdm import tqdm
 import itertools
