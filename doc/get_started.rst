@@ -98,9 +98,9 @@ The provided function facilitates the download of data from the AWS S3 bucket, p
 .. code-block:: python
     :linenos:
 
-    from NeuroGraph import preprcess
+    from NeuroGraph import preprocess
 
-    rest_dataset = preprcess.Brain_connectome_Rest_Download(root,name,n_rois, threshold,path_to_data,n_jobs,s3)
+    rest_dataset = preprocess.Brain_connectome_Rest_Download(root,name,n_rois, threshold,path_to_data,n_jobs,s3)
     gender_dataset = preprocess.Gender_Dataset(root, "HCPGender",rest_dataset) 
     age_dataset = preprocess.Age_Dataset(root, "HCPAge",rest_dataset)
     wm_datast = preprocess.WM_Dataset(root, "HCPAge",rest_dataset)
@@ -111,7 +111,7 @@ To construct the activity dataset, the following functionalities can be used.
 .. code-block:: python
     :linenos:
 
-    from NeuroGraph import preprcess
+    from NeuroGraph import preprocess
 
     activity_dataset = preprocess.Brain_connectome_Activity_Download(root, dataset_name,rois, threshold,path_to_data,n_jobs,s3)
 
@@ -121,7 +121,7 @@ If you have the data locally, then the following functionalities can be used to 
 .. code-block:: python
     :linenos:
 
-    from NeuroGraph import preprcess
+    from NeuroGraph import preprocess
 
     rest_dataset = preprocess.Brain_connectome_Rest(root, name, n_rois, threshold, path_to_data, n_jobs)
 
@@ -130,7 +130,7 @@ Similarly, for constructing the activity dataset, the following function can be 
 .. code-block:: python
     :linenos:
 
-    from NeuroGraph import preprcess
+    from NeuroGraph import preprocess
 
     activity_dataset = preprocess.Brain_connectome_Activity(root, name, n_rois, threshold, path_to_data, n_jobs)
 
@@ -145,7 +145,7 @@ We provide similar functionalities for constructing dynamic datasets as well. We
 .. code-block:: python
     :linenos:
 
-    from NeuroGraph import preprcess
+    from NeuroGraph import preprocess
 
     ngd = DynPrep(fmri, regs, n_rois=100, window_size=50, stride=3, dynamic_length=None)
     dataset = ngd.dataset
@@ -157,7 +157,7 @@ Here the dataset is a list containing the dynamic graphs in the form of `PyG` Ba
 .. code-block:: python
     :linenos:
 
-    from NeuroGraph import preprcess
+    from NeuroGraph import preprocess
 
     dyn_obj = preporcess.DynDownPrep(root, name,s3,n_rois = 100, threshold = 10, window_size = 50,stride == 3, dynamic_length=150)
     dataset = dyn_obj.data_dict
@@ -167,7 +167,7 @@ DynDownPrep class downloads and preprocess the rest dataset and provides a dicti
 .. code-block:: python
     :linenos:
 
-    from NeuroGraph import preprcess
+    from NeuroGraph import preprocess
 
     dyn_obj = preporcess.DynDownPrep(root, name,s3,n_rois = 100, threshold = 10, window_size = 50,stride == 3, dynamic_length=150)
     dataset = dyn_obj.data_dict
