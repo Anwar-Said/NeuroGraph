@@ -20,7 +20,7 @@ NeuroGraph utilizes the `PyG` `InMemoryDataset` class to facilitate the loading 
     from NeuroGraph.datasets import NeuroGraphStatic
 
 
-    dataset = NeuroGraphStatic(root="data/", name= "HCPGender")
+    dataset = NeuroGraphStatic(root="data/", dataset_name= "HCPGender")
 
     print(dataset.num_classes)
     print(dataset.num_features)
@@ -37,7 +37,7 @@ To efficiently store and utilize the dynamic datasets in `PyG`` Batch format, we
 
     from NeuroGraph.datasets import NeuroGraphDynamic
 
-    data_obj = NeuroGraphDynamic(root="data/", name= "DynHCPGender")
+    data_obj = NeuroGraphDynamic(root="data/", dataset_name= "DynHCPGender")
     dataset = data_obj.dataset
     labels = data_obj.labels
     print(len(dataset), len(labels))
