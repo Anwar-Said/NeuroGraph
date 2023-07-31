@@ -90,8 +90,7 @@ class NeuroGraphStatic(InMemoryDataset):
         torch.save((data, slices), self.processed_paths[0])
        
 class NeuroGraphDynamic():
-    """
-        Graph-based neuroimaging benchmark datasets, e.g.,
+    r"""Graph-based neuroimaging benchmark datasets, e.g.,
         :obj:`"DynHCPGender"`, :obj:`"DynHCPAge"`, :obj:`"DynHCPActivity"`,
         :obj:`"DynHCP-WM"`, or :obj:`"DynHCP-FI"`
 
@@ -100,10 +99,8 @@ class NeuroGraphDynamic():
             name (str): The name of the dataset.
 
         Returns:
-            list: A list of graphs in PyTorch Geometric (pyg) format. Each graph has dynamic graphs batched in pyg batch.
+            list: A list of graphs in PyTorch Geometric (pyg) format. Each graph contains a list of dynamic graphs batched in pyg batch.
     """
-
-
     def __init__(self,root, name):
         self.root = root
         self.name = name

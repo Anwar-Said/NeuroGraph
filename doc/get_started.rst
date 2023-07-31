@@ -45,7 +45,7 @@ To efficiently store and utilize the dynamic datasets in `PyG`` Batch format, we
 The dataset is a list of dynamic graphs represented in the `PyG` batch format, making it compatible with graph machine learning pipelines.
 
 
-NeuroGraph Utilities
+Preprocessing Examples
 ====================================
 
 To bridge the gap betwee NeuroGraph and graph machine learning domains, NeuroGraph offers tools to easily preprocess and construct graph-based neuroimaging datasets. Here, we demonstrate how to preprocess your own data to construct functional connectomes and generate corresponding graphs-based representations.
@@ -65,7 +65,7 @@ The corresponding `Adjacency matrix` and `PyG` data objects can be created from 
 
     from NeuroGraph import utils
 
-    adj = utils.construct_Adj(functional_connectome, threshod= 5) # construct the adjacency matrix
+    adj = utils.construct_adj(functional_connectome, threshod= 5) # construct the adjacency matrix
     data = utils.construct_data(fc, threshold = 5) # construct PyG data object
 
 We use correlation as node features while constructing data object from functional connectome. 
@@ -83,13 +83,13 @@ Download and preprocess static datasets
 .. code-block:: python
     :linenos:
 
-    from NeuroGraph.preprocess import Brain_connectome_Rest_Download
+    from NeuroGraph.preprocess import Brain_Connectome_Rest_Download
 
     ACCESS_KEY = ''
     SECRET_KEY = ''
     s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
 
-    rest_dataset = Brain_connectome_Rest_Download(root,name,n_rois, threshold,path_to_data,n_jobs,s3)
+    rest_dataset = Brain_Connectome_Rest_Download(root,name,n_rois, threshold,path_to_data,n_jobs,s3)
 
 
 
@@ -100,10 +100,10 @@ The provided function facilitates the download of data from the AWS S3 bucket, p
 
     from NeuroGraph import preprocess
 
-    rest_dataset = preprocess.Brain_connectome_Rest_Download(root,name,n_rois, threshold,path_to_data,n_jobs,s3)
+    rest_dataset = preprocess.Brain_Connectome_Rest_Download(root,name,n_rois, threshold,path_to_data,n_jobs,s3)
     gender_dataset = preprocess.Gender_Dataset(root, "HCPGender",rest_dataset) 
     age_dataset = preprocess.Age_Dataset(root, "HCPAge",rest_dataset)
-    wm_datast = preprocess.WM_Dataset(root, "HCPAge",rest_dataset)
+    wm_datast = preprocess.WM_Dataset(root, "HCPWM",rest_dataset)
     fi_datast = preprocess.FI_Dataset(root, "HCPFI",rest_dataset)
 
 To construct the activity dataset, the following functionalities can be used. 
@@ -113,7 +113,7 @@ To construct the activity dataset, the following functionalities can be used.
 
     from NeuroGraph import preprocess
 
-    activity_dataset = preprocess.Brain_connectome_Activity_Download(root, dataset_name,rois, threshold,path_to_data,n_jobs,s3)
+    activity_dataset = preprocess.Brain_Connectome_Activity_Download(root, dataset_name,rois, threshold,path_to_data,n_jobs,s3)
 
 If you have the data locally, then the following functionalities can be used to preprocess the data. 
 
@@ -123,7 +123,7 @@ If you have the data locally, then the following functionalities can be used to 
 
     from NeuroGraph import preprocess
 
-    rest_dataset = preprocess.Brain_connectome_Rest(root, name, n_rois, threshold, path_to_data, n_jobs)
+    rest_dataset = preprocess.Brain_Connectome_Rest(root, name, n_rois, threshold, path_to_data, n_jobs)
 
 Similarly, for constructing the activity dataset, the following function can be used. 
 
@@ -132,7 +132,7 @@ Similarly, for constructing the activity dataset, the following function can be 
 
     from NeuroGraph import preprocess
 
-    activity_dataset = preprocess.Brain_connectome_Activity(root, name, n_rois, threshold, path_to_data, n_jobs)
+    activity_dataset = preprocess.Brain_Connectome_Activity(root, name, n_rois, threshold, path_to_data, n_jobs)
 
 
 Download and preprocess dynamic datasets
@@ -147,7 +147,7 @@ We provide similar functionalities for constructing dynamic datasets as well. We
 
     from NeuroGraph import preprocess
 
-    ngd = DynPrep(fmri, regs, n_rois=100, window_size=50, stride=3, dynamic_length=None)
+    ngd = Dyn_Prep(fmri, regs, n_rois=100, window_size=50, stride=3, dynamic_length=None)
     dataset = ngd.dataset
     labels = ngd.labels
     print(len(dataset),len(labels))
@@ -159,17 +159,17 @@ Here the dataset is a list containing the dynamic graphs in the form of `PyG` Ba
 
     from NeuroGraph import preprocess
 
-    dyn_obj = preporcess.DynDownPrep(root, name,s3,n_rois = 100, threshold = 10, window_size = 50,stride == 3, dynamic_length=150)
+    dyn_obj = preporcess.Dyn_Down_Prep(root, name,s3,n_rois = 100, threshold = 10, window_size = 50,stride == 3, dynamic_length=150)
     dataset = dyn_obj.data_dict
 
-DynDownPrep class downloads and preprocess the rest dataset and provides a dictionary that contains a list of dynamic graphs against each id. The dataset can be further prprocessed as follows to construct each benchmark. 
+Dyn_Down_Prep class downloads and preprocess the rest dataset and provides a dictionary that contains a list of dynamic graphs against each id. The dataset can be further prprocessed as follows to construct each benchmark. 
 
 .. code-block:: python
     :linenos:
 
     from NeuroGraph import preprocess
 
-    dyn_obj = preporcess.DynDownPrep(root, name,s3,n_rois = 100, threshold = 10, window_size = 50,stride == 3, dynamic_length=150)
+    dyn_obj = preporcess.Dyn_Down_Prep(root, name,s3,n_rois = 100, threshold = 10, window_size = 50,stride == 3, dynamic_length=150)
     dataset = dyn_obj.data_dict
     gender_dataset, labels = [],[]
     for k,v in dataset.items():

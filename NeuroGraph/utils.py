@@ -137,7 +137,7 @@ def preprocess(fmri,regs, n_rois =1000):
     return corr
 
 
-def construct_Adj(corr, threshold=5):
+def construct_adj(corr, threshold=5):
     """
     create adjacency matrix from functional connectome matrix
     

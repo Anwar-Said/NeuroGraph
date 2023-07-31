@@ -15,7 +15,6 @@
 
    install
 
-
 .. toctree::
    :maxdepth: 2
    :caption: GET STARTED:

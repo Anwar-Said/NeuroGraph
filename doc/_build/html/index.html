@@ -55,7 +55,7 @@
 <p class="caption" role="heading"><span class="caption-text">GET STARTED:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="get_started.html">Intorduction by Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get_started.html#neurograph-utilities">NeuroGraph Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html#preprocessing-examples">Preprocessing Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_started.html#preprocessing-human-connectome-project-hcp1200-dataset">Preprocessing Human Connectome Project (HCP1200) Dataset</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Loading Benchmarks:</span></p>
@@ -116,7 +116,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get_started.html#loading-benchmark-datasets">Loading Benchmark datasets</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="get_started.html#neurograph-utilities">NeuroGraph Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html#preprocessing-examples">Preprocessing Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_started.html#preprocessing-human-connectome-project-hcp1200-dataset">Preprocessing Human Connectome Project (HCP1200) Dataset</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="get_started.html#download-and-preprocess-static-datasets">Download and preprocess static datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get_started.html#download-and-preprocess-dynamic-datasets">Download and preprocess dynamic datasets</a></li>
@@ -139,12 +139,12 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="preprocess.html">NeuroGraph Preprocessing Functionalities</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Age_Dataset"><code class="docutils literal notranslate"><span class="pre">Age_Dataset</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Brain_connectome_Activity"><code class="docutils literal notranslate"><span class="pre">Brain_connectome_Activity</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Brain_connectome_Activity_Download"><code class="docutils literal notranslate"><span class="pre">Brain_connectome_Activity_Download</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Brain_connectome_Rest"><code class="docutils literal notranslate"><span class="pre">Brain_connectome_Rest</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Brain_connectome_Rest_Download"><code class="docutils literal notranslate"><span class="pre">Brain_connectome_Rest_Download</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.DynDownPrep"><code class="docutils literal notranslate"><span class="pre">DynDownPrep</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.DynPrep"><code class="docutils literal notranslate"><span class="pre">DynPrep()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Brain_Connectome_Activity"><code class="docutils literal notranslate"><span class="pre">Brain_Connectome_Activity</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Brain_Connectome_Activity_Download"><code class="docutils literal notranslate"><span class="pre">Brain_Connectome_Activity_Download</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Brain_Connectome_Rest"><code class="docutils literal notranslate"><span class="pre">Brain_Connectome_Rest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Brain_Connectome_Rest_Download"><code class="docutils literal notranslate"><span class="pre">Brain_Connectome_Rest_Download</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Dyn_Down_Prep"><code class="docutils literal notranslate"><span class="pre">Dyn_Down_Prep</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Dyn_Prep"><code class="docutils literal notranslate"><span class="pre">Dyn_Prep()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.FI_Dataset"><code class="docutils literal notranslate"><span class="pre">FI_Dataset</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.Gender_Dataset"><code class="docutils literal notranslate"><span class="pre">Gender_Dataset</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="preprocess.html#NeuroGraph.preprocess.WM_Dataset"><code class="docutils literal notranslate"><span class="pre">WM_Dataset</span></code></a></li>
@@ -156,9 +156,13 @@
 <p class="caption" role="heading"><span class="caption-text">Utilities:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">NeuroGraph Utilities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="utils.html#NeuroGraph.utils.construct_Adj"><code class="docutils literal notranslate"><span class="pre">construct_Adj()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#NeuroGraph.utils.construct_adj"><code class="docutils literal notranslate"><span class="pre">construct_adj()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#NeuroGraph.utils.construct_corr"><code class="docutils literal notranslate"><span class="pre">construct_corr()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html#NeuroGraph.utils.construct_data"><code class="docutils literal notranslate"><span class="pre">construct_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#NeuroGraph.utils.parcellation"><code class="docutils literal notranslate"><span class="pre">parcellation()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html#NeuroGraph.utils.preprocess"><code class="docutils literal notranslate"><span class="pre">preprocess()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#NeuroGraph.utils.regress_head_motions"><code class="docutils literal notranslate"><span class="pre">regress_head_motions()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#NeuroGraph.utils.remove_drifts"><code class="docutils literal notranslate"><span class="pre">remove_drifts()</span></code></a></li>
 </ul>
 </li>
 </ul>

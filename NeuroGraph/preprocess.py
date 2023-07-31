@@ -17,10 +17,7 @@ from tqdm import tqdm
 import itertools
 import random
 
-
-
-
-class DynDownPrep():
+class Dyn_Down_Prep():
     def __init__(self,root, name,s3,n_rois = 100, threshold = 10, window_size = 50,stride = 3,dynamic_length=150):
         self.root, self.name, self.s3,self.n_rois, self.threshold, self.window_size,self.stride,self.dynamic_length = root, name,s3, n_rois,threshold, window_size,stride,dynamic_length
 
@@ -177,7 +174,7 @@ class DynDownPrep():
         print("dataset has been saved successfully!")
         return data_dict
     
-def DynPrep(fmri,regs,n_rois = 100, window_size = 50,stride = 3,dynamic_length=None):
+def Dyn_Prep(fmri,regs,n_rois = 100, window_size = 50,stride = 3,dynamic_length=None):
     """
     Preprocess fMRI data using NeuroGraph preprocessing pipeline and construct dynamic functional connectome matrices
 
@@ -255,7 +252,7 @@ def DynPrep(fmri,regs,n_rois = 100, window_size = 50,stride = 3,dynamic_length=N
 
 
 
-class Brain_connectome_Rest(InMemoryDataset):
+class Brain_Connectome_Rest(InMemoryDataset):
     def __init__(self, root,name,n_rois, threshold,path_to_data,n_jobs, transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.path_to_data,self.n_jobs = root, name,n_rois,threshold,path_to_data,n_jobs
         super().__init__(root, transform, pre_transform, pre_filter)
@@ -508,7 +505,7 @@ class FI_Dataset(InMemoryDataset):
         print("saving path:",self.processed_paths[0])
         torch.save((data, slices), self.processed_paths[0])
 
-class Brain_connectome_Activity(InMemoryDataset):
+class Brain_Connectome_Activity(InMemoryDataset):
     
     def __init__(self, root, dataset_name,n_rois, threshold,path_to_data,n_jobs,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.path_to_data,self.n_jobs = root, dataset_name,n_rois,threshold,path_to_data,n_jobs
@@ -644,7 +641,7 @@ class Brain_connectome_Activity(InMemoryDataset):
         torch.save((data, slices), self.processed_paths[0])
 
 
-class Brain_connectome_Rest_Download(InMemoryDataset):
+class Brain_Connectome_Rest_Download(InMemoryDataset):
     
     def __init__(self, root,name,n_rois, threshold,path_to_data,n_jobs,s3, transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.target_path,self.n_jobs,self.s3 = root, name,n_rois,threshold,path_to_data,n_jobs,s3
@@ -775,7 +772,7 @@ class Brain_connectome_Rest_Download(InMemoryDataset):
         torch.save((data, slices), self.processed_paths[0])
 
 
-class Brain_connectome_Activity_Download(InMemoryDataset):
+class Brain_Connectome_Activity_Download(InMemoryDataset):
     
     def __init__(self, root, dataset_name,n_rois, threshold,path_to_data,n_jobs,s3,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.target_path,self.n_jobs,self.s3 = root, dataset_name,n_rois,threshold,path_to_data,n_jobs,s3
