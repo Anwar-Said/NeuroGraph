@@ -56,7 +56,7 @@ To bridge the gap betwee NeuroGraph and graph machine learning domains, NeuroGra
 
     from NeuroGraph import utils
 
-    functional_connectome = utils.preprocess(fmri, regs, n_rois= 1000) # fmri and regs could be numpy arrays
+    fc = utils.preprocess(fmri, regs, n_rois= 100) # fmri and regs could be numpy arrays
 
 The corresponding `Adjacency matrix` and `PyG` data objects can be created from the functional_connectome as follows. 
 
@@ -65,8 +65,8 @@ The corresponding `Adjacency matrix` and `PyG` data objects can be created from 
 
     from NeuroGraph import utils
 
-    adj = utils.construct_adj(functional_connectome, threshod= 5) # construct the adjacency matrix
-    data = utils.construct_data(fc, threshold = 5) # construct PyG data object
+    adj = utils.construct_adj(fc, threshold= 5) # construct the adjacency matrix
+    data = utils.construct_data(fc, label= 1,threshold = 5) # construct PyG data object
 
 We use correlation as node features while constructing data object from functional connectome. 
 
