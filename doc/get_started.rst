@@ -132,7 +132,7 @@ Download and preprocess static datasets
     n_rois = 100
     n_jobs = 5 # this script runs in parallel and requires the number of jobs is an input
 
-    ACCESS_KEY = ''
+    ACCESS_KEY = ''  # your connectomeDB credentials
     SECRET_KEY = ''
     s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
     # this function requires both HCP_behavioral.csv and ids.pkl files under the root directory. Both files have been provided and can be found under the data directory
