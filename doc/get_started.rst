@@ -1,4 +1,4 @@
-Intorduction by Example
+Introduction by Example
 ================================
 
 We will briefly introduce the fundamental concepts of NeuroGraph through self-contained examples. We closely follow the data representation format of `PyG <https://pytorch-geometric.readthedocs.io/en/latest/>`_. Therefore, interested readers are referred to the `PyG <https://pytorch-geometric.readthedocs.io/en/latest/>`_ documentation for an introduction to the graph machine learning and PyG's data representation formats.   
