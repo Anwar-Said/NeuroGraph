@@ -4,7 +4,7 @@ from torch import nn
 from torch_geometric.nn import global_max_pool
 from torch_geometric.nn import aggr
 import torch.nn.functional as F
-from torch_geometric.nn import APPNP, MLP, GCNConv, GINConv,SAGEConv,GraphConv,TransformerConv,ChebConv,GATConv,SGConv,GeneralConv
+from torch_geometric.nn import APPNP, MLP, GCNConv, GINConv, SAGEConv, GraphConv, TransformerConv, ChebConv, GATConv, SGConv, GeneralConv
 from torch.nn import Conv1d, MaxPool1d, ModuleList
 import random
 import math

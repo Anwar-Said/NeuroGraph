@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='NeuroGraph',
     version='2.0.1',
-    description='A Python package for graph-based Neuroimaging benchmarks and tools',
+    description='A Python package for graph-based neuroimaging benchmarks and tools',
     author='Anwar Said',
     author_email='<anwar.said@vanderbilt.edu>',
     packages=['NeuroGraph'],
@@ -16,7 +16,7 @@ setup(
         
     ],
     keywords = ['python','neuroimaging','graph machine learning'],
-     classifiers=[
+    classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
