@@ -11,11 +11,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=1ed6394b"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -67,16 +67,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Utilities:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">NeuroGraph Utilities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#NeuroGraph.utils.construct_adj"><code class="docutils literal notranslate"><span class="pre">construct_adj()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#NeuroGraph.utils.construct_corr"><code class="docutils literal notranslate"><span class="pre">construct_corr()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#NeuroGraph.utils.construct_data"><code class="docutils literal notranslate"><span class="pre">construct_data()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#NeuroGraph.utils.parcellation"><code class="docutils literal notranslate"><span class="pre">parcellation()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#NeuroGraph.utils.preprocess"><code class="docutils literal notranslate"><span class="pre">preprocess()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#NeuroGraph.utils.regress_head_motions"><code class="docutils literal notranslate"><span class="pre">regress_head_motions()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#NeuroGraph.utils.remove_drifts"><code class="docutils literal notranslate"><span class="pre">remove_drifts()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">NeuroGraph Utilities</a></li>
 </ul>
 
         </div>
@@ -104,10 +95,10 @@
            <div itemprop="articleBody">
              
   <section id="module-NeuroGraph.utils">
-<span id="neurograph-utilities"></span><h1>NeuroGraph Utilities<a class="headerlink" href="#module-NeuroGraph.utils" title="Link to this heading"></a></h1>
+<span id="neurograph-utilities"></span><h1>NeuroGraph Utilities<a class="headerlink" href="#module-NeuroGraph.utils" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="NeuroGraph.utils.construct_adj">
-<span class="sig-name descname"><span class="pre">construct_adj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#construct_adj"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.construct_adj" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">construct_adj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#construct_adj"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.construct_adj" title="Permalink to this definition"></a></dt>
 <dd><p>create adjacency matrix from functional connectome matrix</p>
 <p>Args:</p>
 <p>corr (n x n numpy matrix): functional connectome matrix</p>
@@ -117,7 +108,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NeuroGraph.utils.construct_corr">
-<span class="sig-name descname"><span class="pre">construct_corr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#construct_corr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.construct_corr" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">construct_corr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#construct_corr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.construct_corr" title="Permalink to this definition"></a></dt>
 <dd><p>This function construct correlation matrix from the preprocessed fmri matrix
 Args.</p>
 <p>m (numpy  array): a preprocessed numpy matrix
@@ -126,7 +117,7 @@ return: correlation matrix</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NeuroGraph.utils.construct_data">
-<span class="sig-name descname"><span class="pre">construct_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#construct_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.construct_data" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">construct_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#construct_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.construct_data" title="Permalink to this definition"></a></dt>
 <dd><p>create pyg data object from functional connectome matrix. We use correlation as node features
 Args:</p>
 <p>corr (n x n numpy matrix): functional connectome matrix</p>
@@ -136,7 +127,7 @@ Args:</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NeuroGraph.utils.parcellation">
-<span class="sig-name descname"><span class="pre">parcellation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rois</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#parcellation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.parcellation" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">parcellation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rois</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#parcellation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.parcellation" title="Permalink to this definition"></a></dt>
 <dd><p>Prepfrom brain parcellation</p>
 <p>Args:</p>
 <p>fmri (numpy array): fmri image
@@ -146,7 +137,7 @@ Number of regions of interest. Default=1000.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NeuroGraph.utils.preprocess">
-<span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rois</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.preprocess" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rois</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.preprocess" title="Permalink to this definition"></a></dt>
 <dd><p>Preprocess fMRI data using NeuroGraph preprocessing pipeline</p>
 <p>Args:</p>
 <p>fmri (numpy array): fmri image
@@ -157,7 +148,7 @@ Number of regions of interest. Default=1000.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NeuroGraph.utils.regress_head_motions">
-<span class="sig-name descname"><span class="pre">regress_head_motions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#regress_head_motions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.regress_head_motions" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">regress_head_motions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#regress_head_motions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.regress_head_motions" title="Permalink to this definition"></a></dt>
 <dd><p>This function regress out six rigid- body head motion parameters, along with their derivatives, from the fMRI data</p>
 <p>Args:
 Y (numpy array)): fmri image
@@ -166,7 +157,7 @@ regs (numpy array): movement regressor</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NeuroGraph.utils.remove_drifts">
-<span class="sig-name descname"><span class="pre">remove_drifts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#remove_drifts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.remove_drifts" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_drifts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/utils.html#remove_drifts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.utils.remove_drifts" title="Permalink to this definition"></a></dt>
 <dd><p>This function removes the scanner drifts in the fMRI signals that arise from instrumental factors. By eliminating these trends, we enhance the signal-to-noise ratio and increase the sensitivity to neural activity.</p>
 </dd></dl>
 
