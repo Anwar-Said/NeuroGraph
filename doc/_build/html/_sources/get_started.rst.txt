@@ -1,4 +1,4 @@
-Intorduction by Example
+Introduction by Example
 ================================
 
 We will briefly introduce the fundamental concepts of NeuroGraph through self-contained examples. We closely follow the data representation format of `PyG <https://pytorch-geometric.readthedocs.io/en/latest/>`_. Therefore, interested readers are referred to the `PyG <https://pytorch-geometric.readthedocs.io/en/latest/>`_ documentation for an introduction to the graph machine learning and PyG's data representation formats.   
@@ -56,7 +56,7 @@ To bridge the gap betwee NeuroGraph and graph machine learning domains, NeuroGra
 
     from NeuroGraph import utils
 
-    functional_connectome = utils.preprocess(fmri, regs, n_rois= 1000) # fmri and regs could be numpy arrays
+    fc = utils.preprocess(fmri, regs, n_rois= 1000) # fmri and regs could be numpy arrays
 
 The corresponding `Adjacency matrix` and `PyG` data objects can be created from the functional_connectome as follows. 
 
@@ -65,10 +65,49 @@ The corresponding `Adjacency matrix` and `PyG` data objects can be created from 
 
     from NeuroGraph import utils
 
-    adj = utils.construct_adj(functional_connectome, threshod= 5) # construct the adjacency matrix
-    data = utils.construct_data(fc, threshold = 5) # construct PyG data object
+    adj = utils.construct_adj(fc, threshold= 5) # construct the adjacency matrix
+    data = utils.construct_data(fc, label= 1,threshold = 5) # construct PyG data object
 
 We use correlation as node features while constructing data object from functional connectome. 
+
+The following is the source code for processing one fMRI scan with corresponding regressor using our preprocessing pipeline.
+
+.. code-block:: python
+    :linenos:
+
+    from NeuroGraph import utils
+    import numpy as np
+    from nilearn.image import load_img
+
+    img = load_img("data/raw/1.nii.gz") # 1.nii.gz is fMRI scan
+    regs = np.loadtxt("data/raw/1.txt") # 1.txt is the movement regressor
+
+    fmri = img.get_fdata()
+    fc = utils.preprocess(fmri, regs, n_rois= 100)
+    adj = utils.construct_adj(fc, threshold= 5) # construct the adjacency matrix
+    data = utils.construct_data(fc, label = 1,threshold = 5) # construct torch Data object
+    
+
+Our preprocessing pipeline consists of five steps and can also be applied seperately in steps.
+
+.. code-block:: python
+    :linenos:
+
+    from NeuroGraph import utils
+    import numpy as np
+    from nilearn.image import load_img
+
+    img = load_img("data/raw/1.nii.gz")
+    regs = np.loadtxt("data/raw/1.txt")
+    fmri = img.get_fdata()
+
+    parcells = utils.parcellation(fmri,n_rois = 100) ## this uses schaefer atlas by default
+    Y = utils.remove_drifts(parcells)
+    Y = utils.regress_head_motions(Y,regs)
+    fc = utils.construct_corr(Y)
+    adj = utils.construct_adj(fc, threshold= 5) # construct the adjacency matrix
+    data = utils.construct_data(fc, label = 1,threshold = 5)
+    
 
 
 Preprocessing Human Connectome Project (HCP1200) Dataset
@@ -84,13 +123,20 @@ Download and preprocess static datasets
     :linenos:
 
     from NeuroGraph.preprocess import Brain_Connectome_Rest_Download
+    import boto3
 
-    ACCESS_KEY = ''
+    root = "data/"
+    name = "HCPGender"
+    threshold = 5
+    path_to_data = "data/raw/HCPGender"  # store the raw downloaded scans
+    n_rois = 100
+    n_jobs = 5 # this script runs in parallel and requires the number of jobs is an input
+
+    ACCESS_KEY = ''  # your connectomeDB credentials
     SECRET_KEY = ''
     s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
-
+    # this function requires both HCP_behavioral.csv and ids.pkl files under the root directory. Both files have been provided and can be found under the data directory
     rest_dataset = Brain_Connectome_Rest_Download(root,name,n_rois, threshold,path_to_data,n_jobs,s3)
-
 
 
 The provided function facilitates the download of data from the AWS S3 bucket, performs preprocessing steps, and generates a graph-based dataset. It is important to note that the `rest_dataset` used in this function consists of four labels: gender, age, working memory, and fluid intelligence. To create separate datasets based on these labels, the following functionalities can be used. 
@@ -138,7 +184,7 @@ Similarly, for constructing the activity dataset, the following function can be 
 Download and preprocess dynamic datasets
 ---------------------------------------------------
 
-We provide similar functionalities for constructing dynamic datasets as well. We can construct dynamic rest dataset from the data on local storage as follow. 
+We also offer similar functionalities for constructing dynamic datasets. You can create a dynamic REST dataset from the data stored locally as follows. 
 
 
 
@@ -152,7 +198,7 @@ We provide similar functionalities for constructing dynamic datasets as well. We
     labels = ngd.labels
     print(len(dataset),len(labels))
 
-Here the dataset is a list containing the dynamic graphs in the form of `PyG` Batch, which can easily feeded to graph machine learning pipelines. With the following examples, dynamic rest dataset can be downloaded and preprocessed on the fly. 
+Here the dataset is a list containing dynamic graphs in the form of PyG Batch, which can be easily fed into graph machine learning pipelines. The following examples demonstrate how a dynamic REST dataset can be downloaded and preprocessed on the fly. 
 
 .. code-block:: python
     :linenos:
@@ -193,7 +239,7 @@ Dyn_Down_Prep class downloads and preprocess the rest dataset and provides a dic
             continue
         l = v[0].y
         age = int(l[1].item())
-        if age<=2:  ### Ignoring subjects with age >=36
+        if age <=2:  ### Ignoring subjects with age >=36
             sub = []
             for d in v:
                 new_data = Data(x = d.x, edge_index = d.edge_index, y = age)
