@@ -20,7 +20,7 @@ NeuroGraph utilizes the `PyG` `InMemoryDataset` class to facilitate the loading 
     from NeuroGraph.datasets import NeuroGraphStatic
 
 
-    dataset = NeuroGraphStatic(root="data/", dataset_name= "HCPGender")
+    dataset = NeuroGraphStatic(root="data/", name= "HCPGender")
 
     print(dataset.num_classes)
     print(dataset.num_features)
