@@ -11,8 +11,6 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=c2377ec0"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
@@ -114,10 +112,10 @@
            <div itemprop="articleBody">
              
   <section id="module-NeuroGraph.datasets">
-<span id="load-benchmark-datasets"></span><h1>Load Benchmark Datasets<a class="headerlink" href="#module-NeuroGraph.datasets" title="Link to this heading"></a></h1>
+<span id="load-benchmark-datasets"></span><h1>Load Benchmark Datasets<a class="headerlink" href="#module-NeuroGraph.datasets" title="Link to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphDynamic">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NeuroGraphDynamic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphDynamic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphDynamic" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NeuroGraphDynamic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphDynamic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphDynamic" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Graph-based neuroimaging benchmark datasets, e.g.,
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;DynHCPGender&quot;</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;DynHCPAge&quot;</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">&quot;DynHCPActivity&quot;</span></code>,
@@ -131,19 +129,19 @@ name (str): The name of the dataset.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphDynamic.download">
-<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphDynamic.download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphDynamic.download" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphDynamic.download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphDynamic.download" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphDynamic.load_data">
-<span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphDynamic.load_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphDynamic.load_data" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphDynamic.load_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphDynamic.load_data" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphStatic">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NeuroGraphStatic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphStatic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NeuroGraphStatic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphStatic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryDataset</span></code></p>
 <p>The NeuroGraph benchmark datasets from the
 <a class="reference external" href="https://arxiv.org/abs/2306.06202">“NeuroGraph: Benchmarks for Graph Machine Learning in Brain Connectomics”</a> paper.
@@ -207,48 +205,48 @@ final dataset. (default: <code class="xref py py-obj docutils literal notranslat
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphStatic.download">
-<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphStatic.download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.download" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphStatic.download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.download" title="Link to this definition">¶</a></dt>
 <dd><p>Downloads the dataset to the <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.raw_dir</span></code> folder.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphStatic.filenames">
-<span class="sig-name descname"><span class="pre">filenames</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'HCPActivity':</span> <span class="pre">'b4g59ibn8itegr0rpcd16m9ajb2qyddf.zip',</span> <span class="pre">'HCPAge':</span> <span class="pre">'static/lzzks4472czy9f9vc8aikp7pdbknmtfe.zip',</span> <span class="pre">'HCPFI':</span> <span class="pre">'g2md9h9snh7jh6eeay02k1kr9m4ido9f.zip',</span> <span class="pre">'HCPGender':</span> <span class="pre">'r6hlz2arm7yiy6v6981cv2nzq3b0meax.zip',</span> <span class="pre">'HCPWM':</span> <span class="pre">'xtmpa6712fidi94x6kevpsddf9skuoxy.zip'}</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.filenames" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">filenames</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'HCPActivity':</span> <span class="pre">'b4g59ibn8itegr0rpcd16m9ajb2qyddf.zip',</span> <span class="pre">'HCPAge':</span> <span class="pre">'static/lzzks4472czy9f9vc8aikp7pdbknmtfe.zip',</span> <span class="pre">'HCPFI':</span> <span class="pre">'g2md9h9snh7jh6eeay02k1kr9m4ido9f.zip',</span> <span class="pre">'HCPGender':</span> <span class="pre">'r6hlz2arm7yiy6v6981cv2nzq3b0meax.zip',</span> <span class="pre">'HCPWM':</span> <span class="pre">'xtmpa6712fidi94x6kevpsddf9skuoxy.zip'}</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.filenames" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphStatic.process">
-<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphStatic.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.process" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NeuroGraph/datasets.html#NeuroGraphStatic.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.process" title="Link to this definition">¶</a></dt>
 <dd><p>Processes the dataset to the <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.processed_dir</span></code> folder.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphStatic.processed_dir">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">processed_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.processed_dir" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">processed_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.processed_dir" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphStatic.processed_file_names">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">processed_file_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.processed_file_names" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">processed_file_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.processed_file_names" title="Link to this definition">¶</a></dt>
 <dd><p>The name of the files in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.processed_dir</span></code> folder that
 must be present in order to skip processing.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphStatic.raw_dir">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.raw_dir" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.raw_dir" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphStatic.raw_file_names">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_file_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.raw_file_names" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_file_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.raw_file_names" title="Link to this definition">¶</a></dt>
 <dd><p>The name of the files in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.raw_dir</span></code> folder that must
 be present in order to skip downloading.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="NeuroGraph.datasets.NeuroGraphStatic.url">
-<span class="sig-name descname"><span class="pre">url</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://vanderbilt.box.com/shared/static'</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.url" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">url</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://vanderbilt.box.com/shared/static'</span></em><a class="headerlink" href="#NeuroGraph.datasets.NeuroGraphStatic.url" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
