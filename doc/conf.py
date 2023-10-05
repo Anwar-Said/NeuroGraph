@@ -22,7 +22,7 @@ release = '2.0.2'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ["sphinx.ext.todo","sphinx.ext.viewcode","sphinx.ext.autodoc"]
-# html_output_path = '$READTHEDOCS_OUTPUT/html'
+html_output_path = '$READTHEDOCS_OUTPUT/html'
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
