@@ -1,4 +1,4 @@
-import sphinx_rtd_theme
+# import sphinx_rtd_theme
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -34,6 +34,6 @@ pygments_style = 'sphinx'
 todo_include_todos = False
 
 html_theme = 'sphinx_rtd_theme'
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+# html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 html_static_path = ['_static']
