@@ -12,7 +12,8 @@ setup(
         'boto3==1.26.158',
         'nilearn==0.10.1',
         'networkx==2.6',
-        'pandas'
+        'pandas',
+        'sphinx_rtd_theme'
         
     ],
     keywords = ['python','neuroimaging','graph machine learning'],
