@@ -12,7 +12,7 @@ sys.path.insert(0,os.path.abspath(".."))
 project = 'NeuroGraph'
 copyright = '2023, Anwar Said'
 author = 'Anwar Said'
-release = '1.0.2'
+release = '2.0.2'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
