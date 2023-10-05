@@ -1,7 +1,8 @@
-boto3==1.26.158
+sphinx_rtd_theme
+boto3
 nilearn
 pandas
 torch
 torch_geometric
-networkx==2.6
-sphinx_rtd_theme
+networkx
+
