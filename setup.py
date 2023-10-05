@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='NeuroGraph',
-    version='2.0.1',
+    version='2.0.2',
     description='A Python package for graph-based neuroimaging benchmarks and tools',
     author='Anwar Said',
     author_email='<anwar.said@vanderbilt.edu>',
