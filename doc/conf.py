@@ -16,7 +16,7 @@ master_doc = 'index'
 project = 'NeuroGraph'
 copyright = '2023, Anwar Said'
 author = 'Anwar Said'
-release = '2.0.2'
+release = '2.1.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
