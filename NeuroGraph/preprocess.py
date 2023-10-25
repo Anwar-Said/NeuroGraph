@@ -63,7 +63,7 @@ class Dyn_Down_Prep():
     #             print(i)
                 bool_roi = np.zeros(self.volume.shape, dtype=int)
                 bool_roi[self.volume == i] = 1
-                bool_roi = bool_roi.astype(np.bool)
+                bool_roi = bool_roi.astype(bool)
     #             print(bool_roi.shape)
                 # extract time-series data for each roi
                 roi_ts_mean = []
@@ -199,7 +199,7 @@ def Dyn_Prep(fmri,regs,n_rois = 100, window_size = 50,stride = 3,dynamic_length=
         if i != 0: 
             bool_roi = np.zeros(volume.shape, dtype=int)
             bool_roi[volume == i] = 1
-            bool_roi = bool_roi.astype(np.bool)
+            bool_roi = bool_roi.astype(bool)
             roi_ts_mean = []
             for t in range(fmri.shape[-1]):
                 roi_ts_mean.append(np.mean(fmri[:, :, :, t][bool_roi]))
@@ -282,7 +282,7 @@ class Brain_Connectome_Rest(InMemoryDataset):
     #             print(i)
                 bool_roi = np.zeros(volume.shape, dtype=int)
                 bool_roi[volume == i] = 1
-                bool_roi = bool_roi.astype(np.bool)
+                bool_roi = bool_roi.astype(bool)
     #             print(bool_roi.shape)
                 # extract time-series data for each roi
                 roi_ts_mean = []
@@ -505,7 +505,7 @@ class FI_Dataset(InMemoryDataset):
         print("saving path:",self.processed_paths[0])
         torch.save((data, slices), self.processed_paths[0])
 
-class Brain_Connectome_Activity(InMemoryDataset):
+class Brain_Connectome_State(InMemoryDataset):
     
     def __init__(self, root, dataset_name,n_rois, threshold,path_to_data,n_jobs,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.path_to_data,self.n_jobs = root, dataset_name,n_rois,threshold,path_to_data,n_jobs
@@ -535,7 +535,7 @@ class Brain_Connectome_Activity(InMemoryDataset):
     #             print(i)
                 bool_roi = np.zeros(volume.shape, dtype=int)
                 bool_roi[volume == i] = 1
-                bool_roi = bool_roi.astype(np.bool)
+                bool_roi = bool_roi.astype(bool)
     #             print(bool_roi.shape)
                 # extract time-series data for each roi
                 roi_ts_mean = []
@@ -673,7 +673,7 @@ class Brain_Connectome_Rest_Download(InMemoryDataset):
     #             print(i)
                 bool_roi = np.zeros(volume.shape, dtype=int)
                 bool_roi[volume == i] = 1
-                bool_roi = bool_roi.astype(np.bool)
+                bool_roi = bool_roi.astype(bool)
     #             print(bool_roi.shape)
                 # extract time-series data for each roi
                 roi_ts_mean = []
@@ -772,7 +772,7 @@ class Brain_Connectome_Rest_Download(InMemoryDataset):
         torch.save((data, slices), self.processed_paths[0])
 
 
-class Brain_Connectome_Activity_Download(InMemoryDataset):
+class Brain_Connectome_State_Download(InMemoryDataset):
     
     def __init__(self, root, dataset_name,n_rois, threshold,path_to_data,n_jobs,s3,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.target_path,self.n_jobs,self.s3 = root, dataset_name,n_rois,threshold,path_to_data,n_jobs,s3
@@ -882,7 +882,7 @@ class Brain_Connectome_Activity_Download(InMemoryDataset):
     #             print(i)
                 bool_roi = np.zeros(volume.shape, dtype=int)
                 bool_roi[volume == i] = 1
-                bool_roi = bool_roi.astype(np.bool)
+                bool_roi = bool_roi.astype(bool)
     #             print(bool_roi.shape)
                 # extract time-series data for each roi
                 roi_ts_mean = []

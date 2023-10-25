@@ -20,7 +20,7 @@ NeuroGraph utilizes the `PyG` `InMemoryDataset` class to facilitate the loading 
     from NeuroGraph.datasets import NeuroGraphStatic
 
 
-    dataset = NeuroGraphStatic(root="data/", name= "HCPGender")
+    dataset = NeuroGraphStatic(root="data/", name= "HCP-Gender")
 
     print(dataset.num_classes)
     print(dataset.num_features)
@@ -37,7 +37,7 @@ To efficiently store and utilize the dynamic datasets in `PyG`` Batch format, we
 
     from NeuroGraph.datasets import NeuroGraphDynamic
 
-    data_obj = NeuroGraphDynamic(root="data/", dataset_name= "DynHCPGender")
+    data_obj = NeuroGraphDynamic(root="data/", dataset_name= "DynHCP-Gender")
     dataset = data_obj.dataset
     labels = data_obj.labels
     print(len(dataset), len(labels))
@@ -152,14 +152,14 @@ The provided function facilitates the download of data from the AWS S3 bucket, p
     wm_datast = preprocess.WM_Dataset(root, "HCPWM",rest_dataset)
     fi_datast = preprocess.FI_Dataset(root, "HCPFI",rest_dataset)
 
-To construct the activity dataset, the following functionalities can be used. 
+To construct the State dataset, the following functionalities can be used. 
 
 .. code-block:: python
     :linenos:
 
     from NeuroGraph import preprocess
 
-    activity_dataset = preprocess.Brain_Connectome_Activity_Download(root, dataset_name,rois, threshold,path_to_data,n_jobs,s3)
+    state_dataset = preprocess.Brain_Connectome_State_Download(root, dataset_name,rois, threshold,path_to_data,n_jobs,s3)
 
 If you have the data locally, then the following functionalities can be used to preprocess the data. 
 
@@ -171,14 +171,14 @@ If you have the data locally, then the following functionalities can be used to 
 
     rest_dataset = preprocess.Brain_Connectome_Rest(root, name, n_rois, threshold, path_to_data, n_jobs)
 
-Similarly, for constructing the activity dataset, the following function can be used. 
+Similarly, for constructing the State dataset, the following function can be used. 
 
 .. code-block:: python
     :linenos:
 
     from NeuroGraph import preprocess
 
-    activity_dataset = preprocess.Brain_Connectome_Activity(root, name, n_rois, threshold, path_to_data, n_jobs)
+    state_dataset = preprocess.Brain_Connectome_State(root, name, n_rois, threshold, path_to_data, n_jobs)
 
 
 Download and preprocess dynamic datasets

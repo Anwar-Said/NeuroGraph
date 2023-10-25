@@ -26,22 +26,22 @@ class NeuroGraphStatic(InMemoryDataset):
     +--------------------+---------+----------------------+
     | Dataset            | #Graphs | Task                 |
     +====================+=========+======================+
-    | :obj:`HCPActivity` | 7,443   | Graph Classification |
+    | :obj:`HCP-State` | 7,443   | Graph Classification |
     +--------------------+---------+----------------------+
-    | :obj:`HCPGender`   | 1,078   | Graph Classification |
+    | :obj:`HCP-Gender`   | 1,078   | Graph Classification |
     +--------------------+---------+----------------------+
-    | :obj:`HCPAge`      | 1,065   | Graph Classification |
+    | :obj:`HCP-Age`      | 1,065   | Graph Classification |
     +--------------------+---------+----------------------+
-    | :obj:`HCPFI`       | 1,071   | Graph Regression     |
+    | :obj:`HCP-FI`       | 1,071   | Graph Regression     |
     +--------------------+---------+----------------------+
-    | :obj:`HCPWM`       | 1,078   | Graph Regression     |
+    | :obj:`HCP-WM`       | 1,078   | Graph Regression     |
     +--------------------+---------+----------------------+
 
     Args:
         root (str): Root directory where the dataset should be saved.
         name (str): The name of the dataset (one of :obj:`"HCPGender"`,
-            :obj:`"HCPActivity"`, :obj:`"HCPAge"`, :obj:`"HCPFI"`,
-            :obj:`"HCPWM"`).
+            :obj:`"HCP-State"`, :obj:`"HCP-Age"`, :obj:`"HCP-FI"`,
+            :obj:`"HCP-WM"`).
         transform (callable, optional): A function/transform that takes in an
             :obj:`torch_geometric.data.Data` object and returns a transformed
             version. The data object will be transformed before every access.
@@ -57,11 +57,11 @@ class NeuroGraphStatic(InMemoryDataset):
     """
     url = 'https://vanderbilt.box.com/shared/static'
     filenames = {
-        'HCPGender': 'r6hlz2arm7yiy6v6981cv2nzq3b0meax.zip',
-        'HCPActivity': 'b4g59ibn8itegr0rpcd16m9ajb2qyddf.zip',
-        'HCPAge': 'static/lzzks4472czy9f9vc8aikp7pdbknmtfe.zip',
-        'HCPWM': 'xtmpa6712fidi94x6kevpsddf9skuoxy.zip',
-        'HCPFI': 'g2md9h9snh7jh6eeay02k1kr9m4ido9f.zip',
+        'HCP-Gender': 'r6hlz2arm7yiy6v6981cv2nzq3b0meax.zip',
+        'HCP-State': 'b4g59ibn8itegr0rpcd16m9ajb2qyddf.zip',
+        'HCP-Age': 'static/lzzks4472czy9f9vc8aikp7pdbknmtfe.zip',
+        'HCP-WM': 'xtmpa6712fidi94x6kevpsddf9skuoxy.zip',
+        'HCP-FI': 'g2md9h9snh7jh6eeay02k1kr9m4ido9f.zip',
     }
 
     def __init__(
@@ -129,8 +129,8 @@ class NeuroGraphStatic(InMemoryDataset):
 
 class NeuroGraphDynamic():
     r"""Graph-based neuroimaging benchmark datasets, e.g.,
-        :obj:`"DynHCPGender"`, :obj:`"DynHCPAge"`, :obj:`"DynHCPActivity"`,
-        :obj:`"DynHCPWM"`, or :obj:`"DynHCPFI"`
+        :obj:`"DynHCP-Gender"`, :obj:`"DynHCP-Age"`, :obj:`"DynHCP-State"`,
+        :obj:`"DynHCP-WM"`, or :obj:`"DynHCP-FI"`
 
         Args:
             root (str): Root directory where the dataset should be saved.
@@ -142,11 +142,11 @@ class NeuroGraphDynamic():
     def __init__(self,root, name):
         self.root = root
         self.name = name
-        self.urls = {"DynHCPGender":'https://vanderbilt.box.com/shared/static/mj0z6unea34lfz1hkdwsinj7g22yohxn.zip',
-                    "DynHCPActivity":'https://vanderbilt.box.com/shared/static/2so3fnfqakeu6hktz322o3nm2c8ocus7.zip',
-                    "DynHCPAge":'https://vanderbilt.box.com/shared/static/195f9teg4t4apn6kl6hbc4ib4g9addtq.zip',
-                    "DynHCPWM":'https://vanderbilt.box.com/shared/static/mxy8fq3ghm60q6h7uhnu80pgvfxs6xo2.zip',
-                    "DynHCPFI":'https://vanderbilt.box.com/shared/static/un7w3ohb2mmyjqt1ou2wm3g87y1lfuuo.zip'
+        self.urls = {"DynHCP-Gender":'https://vanderbilt.box.com/shared/static/mj0z6unea34lfz1hkdwsinj7g22yohxn.zip',
+                    "DynHCP-State":'https://vanderbilt.box.com/shared/static/2so3fnfqakeu6hktz322o3nm2c8ocus7.zip',
+                    "DynHCP-Age":'https://vanderbilt.box.com/shared/static/195f9teg4t4apn6kl6hbc4ib4g9addtq.zip',
+                    "DynHCP-WM":'https://vanderbilt.box.com/shared/static/mxy8fq3ghm60q6h7uhnu80pgvfxs6xo2.zip',
+                    "DynHCP-FI":'https://vanderbilt.box.com/shared/static/un7w3ohb2mmyjqt1ou2wm3g87y1lfuuo.zip'
                     }
         if self.urls.get(name):
             self.download(self.urls.get(name))
@@ -162,7 +162,7 @@ class NeuroGraphDynamic():
             file.extractall(os.path.join(self.root,self.name,os.path.dirname(basename)))
             # self.remove(os.path.join(self.raw_dir,basename))
     def load_data(self):
-        if self.name=='DynHCPActivity':
+        if self.name=='DynHCP-State':
             dataset_raw = torch.load(os.path.join(self.root,self.name,self.name,"processed", self.name+".pt"))
             dataset,labels = [],[]
             for v in dataset_raw:

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='NeuroGraph',
-    version='2.1.0',
+    version='2.2.0',
     description='A Python package for graph-based neuroimaging benchmarks and tools',
     author='Anwar Said',
     author_email='<anwar.said@vanderbilt.edu>',
@@ -11,6 +11,7 @@ setup(
         # List any dependencies your package requires
         'boto3',
         'nilearn',
+        'nibabel',
         'networkx',
         'pandas',
         'sphinx_rtd_theme'
