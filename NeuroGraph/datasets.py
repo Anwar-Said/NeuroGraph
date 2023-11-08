@@ -129,8 +129,8 @@ class NeuroGraphDataset(InMemoryDataset):
 
 class NeuroGraphDynamic():
     r"""Graph-based neuroimaging benchmark datasets, e.g.,
-        :obj:`"DynHCP-Gender"`, :obj:`"DynHCP-Age"`, :obj:`"DynHCP-State"`,
-        :obj:`"DynHCP-WM"`, or :obj:`"DynHCP-FI"`
+        :obj:`"DynHCPGender"`, :obj:`"DynHCPAge"`, :obj:`"DynHCPState"`,
+        :obj:`"DynHCPWM"`, or :obj:`"DynHCPFI"`
 
         Args:
             root (str): Root directory where the dataset should be saved.
