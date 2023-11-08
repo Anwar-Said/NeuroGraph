@@ -59,7 +59,7 @@ class NeuroGraphDataset(InMemoryDataset):
     filenames = {
         'HCPGender': 'r6hlz2arm7yiy6v6981cv2nzq3b0meax.zip',
         'HCPActivity': 'b4g59ibn8itegr0rpcd16m9ajb2qyddf.zip',
-        'HCPAge': 'static/lzzks4472czy9f9vc8aikp7pdbknmtfe.zip',
+        'HCPAge': 'lzzks4472czy9f9vc8aikp7pdbknmtfe.zip',
         'HCPWM': 'xtmpa6712fidi94x6kevpsddf9skuoxy.zip',
         'HCPFI': 'g2md9h9snh7jh6eeay02k1kr9m4ido9f.zip',
     }
@@ -164,7 +164,7 @@ class NeuroGraphDynamic():
         if not os.path.exists(file_path):
             self.download()
         # else:
-        #     print('dataset not found! The name of the datasets are: "DynHCP-Gender","DynHCP-Activity","DynHCP-Age","DynHCP-WM","DynHCP-FI"')
+        #     print('dataset not found! The name of the datasets are: "DynHCPGender","DynHCPActivity","DynHCPAge","DynHCPWM","DynHCPFI"')
         self.dataset, self.labels = self.load_data()
     
     # def download(self,url):
