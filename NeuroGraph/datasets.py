@@ -150,14 +150,6 @@ class NeuroGraphDynamic():
     def __init__(self,root, name):
         self.root = root
         self.name = name
-        
-
-        # self.urls = {"DynHCP-Gender":'https://vanderbilt.box.com/shared/static/mj0z6unea34lfz1hkdwsinj7g22yohxn.zip',
-        #             "DynHCP-State":'https://vanderbilt.box.com/shared/static/2so3fnfqakeu6hktz322o3nm2c8ocus7.zip',
-        #             "DynHCP-Age":'https://vanderbilt.box.com/shared/static/195f9teg4t4apn6kl6hbc4ib4g9addtq.zip',
-        #             "DynHCP-WM":'https://vanderbilt.box.com/shared/static/mxy8fq3ghm60q6h7uhnu80pgvfxs6xo2.zip',
-        #             "DynHCP-FI":'https://vanderbilt.box.com/shared/static/un7w3ohb2mmyjqt1ou2wm3g87y1lfuuo.zip'
-        #             }
         assert name in self.filenames.keys()
         self.name = name
         file_path = os.path.join(self.root,self.name,'processed', self.name+".pt")

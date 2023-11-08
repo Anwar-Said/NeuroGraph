@@ -254,14 +254,6 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        
-
-        <span class="c1"># self.urls = {&quot;DynHCP-Gender&quot;:&#39;https://vanderbilt.box.com/shared/static/mj0z6unea34lfz1hkdwsinj7g22yohxn.zip&#39;,</span>
-        <span class="c1">#             &quot;DynHCP-State&quot;:&#39;https://vanderbilt.box.com/shared/static/2so3fnfqakeu6hktz322o3nm2c8ocus7.zip&#39;,</span>
-        <span class="c1">#             &quot;DynHCP-Age&quot;:&#39;https://vanderbilt.box.com/shared/static/195f9teg4t4apn6kl6hbc4ib4g9addtq.zip&#39;,</span>
-        <span class="c1">#             &quot;DynHCP-WM&quot;:&#39;https://vanderbilt.box.com/shared/static/mxy8fq3ghm60q6h7uhnu80pgvfxs6xo2.zip&#39;,</span>
-        <span class="c1">#             &quot;DynHCP-FI&quot;:&#39;https://vanderbilt.box.com/shared/static/un7w3ohb2mmyjqt1ou2wm3g87y1lfuuo.zip&#39;</span>
-        <span class="c1">#             }</span>
         <span class="k">assert</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">filenames</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;processed&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;.pt&quot;</span><span class="p">)</span>
