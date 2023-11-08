@@ -11,11 +11,9 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/documentation_options.js?v=20623aea"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -107,18 +105,18 @@
            <div itemprop="articleBody">
              
   <section id="introduction-by-example">
-<h1>Introduction by Example<a class="headerlink" href="#introduction-by-example" title="Permalink to this heading">¶</a></h1>
+<h1>Introduction by Example<a class="headerlink" href="#introduction-by-example" title="Link to this heading">¶</a></h1>
 <p>We will briefly introduce the fundamental concepts of NeuroGraph through self-contained examples. We closely follow the data representation format of <a class="reference external" href="https://pytorch-geometric.readthedocs.io/en/latest/">PyG</a>. Therefore, interested readers are referred to the <a class="reference external" href="https://pytorch-geometric.readthedocs.io/en/latest/">PyG</a> documentation for an introduction to the graph machine learning and PyG’s data representation formats.</p>
 <section id="loading-benchmark-datasets">
-<h2>Loading Benchmark datasets<a class="headerlink" href="#loading-benchmark-datasets" title="Permalink to this heading">¶</a></h2>
+<h2>Loading Benchmark datasets<a class="headerlink" href="#loading-benchmark-datasets" title="Link to this heading">¶</a></h2>
 <p>NeuroGraph provides two classes for loading static and dynamic benchmark datastes.</p>
 <section id="loading-static-benchmarks">
-<h3>Loading Static Benchmarks<a class="headerlink" href="#loading-static-benchmarks" title="Permalink to this heading">¶</a></h3>
+<h3>Loading Static Benchmarks<a class="headerlink" href="#loading-static-benchmarks" title="Link to this heading">¶</a></h3>
 <p>NeuroGraph utilizes the <cite>PyG</cite> <cite>InMemoryDataset</cite> class to facilitate the loading of datasets. this allows an easy-to-use interface for applying graph machine learning pipelines. For example, the <cite>HCPGender</cite> benchmark can be loaded as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph.datasets</span> <span class="kn">import</span> <span class="n">NeuroGraphStatic</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span>
-<span class="linenos">4</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">NeuroGraphStatic</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;data/&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span> <span class="s2">&quot;HCP-Gender&quot;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">NeuroGraphStatic</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;data/&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span> <span class="s2">&quot;HCPGender&quot;</span><span class="p">)</span>
 <span class="linenos">5</span>
 <span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">num_classes</span><span class="p">)</span>
 <span class="linenos">7</span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">num_features</span><span class="p">)</span>
@@ -126,11 +124,11 @@
 </div>
 </section>
 <section id="loading-dynamic-dataset">
-<h3>Loading Dynamic Dataset<a class="headerlink" href="#loading-dynamic-dataset" title="Permalink to this heading">¶</a></h3>
+<h3>Loading Dynamic Dataset<a class="headerlink" href="#loading-dynamic-dataset" title="Link to this heading">¶</a></h3>
 <p>To efficiently store and utilize the dynamic datasets in <cite>PyG`</cite> Batch format, we provide the corresponding functionality. Here is an example of loading the <cite>DynHCPGender</cite> dataset:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph.datasets</span> <span class="kn">import</span> <span class="n">NeuroGraphDynamic</span>
 <span class="linenos">2</span>
-<span class="linenos">3</span><span class="n">data_obj</span> <span class="o">=</span> <span class="n">NeuroGraphDynamic</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;data/&quot;</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span> <span class="s2">&quot;DynHCP-Gender&quot;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">data_obj</span> <span class="o">=</span> <span class="n">NeuroGraphDynamic</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;data/&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span> <span class="s2">&quot;DynHCPGender&quot;</span><span class="p">)</span>
 <span class="linenos">4</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">data_obj</span><span class="o">.</span><span class="n">dataset</span>
 <span class="linenos">5</span><span class="n">labels</span> <span class="o">=</span> <span class="n">data_obj</span><span class="o">.</span><span class="n">labels</span>
 <span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>
@@ -141,7 +139,7 @@
 </section>
 </section>
 <section id="preprocessing-examples">
-<h1>Preprocessing Examples<a class="headerlink" href="#preprocessing-examples" title="Permalink to this heading">¶</a></h1>
+<h1>Preprocessing Examples<a class="headerlink" href="#preprocessing-examples" title="Link to this heading">¶</a></h1>
 <p>To bridge the gap betwee NeuroGraph and graph machine learning domains, NeuroGraph offers tools to easily preprocess and construct graph-based neuroimaging datasets. Here, we demonstrate how to preprocess your own data to construct functional connectomes and generate corresponding graphs-based representations.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph</span> <span class="kn">import</span> <span class="n">utils</span>
 <span class="linenos">2</span>
@@ -189,10 +187,10 @@
 </div>
 </section>
 <section id="preprocessing-human-connectome-project-hcp1200-dataset">
-<h1>Preprocessing Human Connectome Project (HCP1200) Dataset<a class="headerlink" href="#preprocessing-human-connectome-project-hcp1200-dataset" title="Permalink to this heading">¶</a></h1>
+<h1>Preprocessing Human Connectome Project (HCP1200) Dataset<a class="headerlink" href="#preprocessing-human-connectome-project-hcp1200-dataset" title="Link to this heading">¶</a></h1>
 <p>NeuroGraph utilizes the HCP1200 dataset as a primary data source for exploring the dataset generation search space and constructing benchmarks. The HCP1200 dataset can be accessed from the <a class="reference external" href="https://www.humanconnectome.org/study/hcp-young-adult">HCP website</a> by accepting the data usage terms. Additionally, the dataset is also available on an AWS S3 bucket, which can be accessed once authorization has been obtained from HCP. In this section, we provide various functions that allow you to crawl and preprocess the HCP datasets, enabling the construction of graph-based neuroimaging datasets. These functions streamline the process of obtaining and preparing the data for further analysis and modeling.</p>
 <section id="download-and-preprocess-static-datasets">
-<h2>Download and preprocess static datasets<a class="headerlink" href="#download-and-preprocess-static-datasets" title="Permalink to this heading">¶</a></h2>
+<h2>Download and preprocess static datasets<a class="headerlink" href="#download-and-preprocess-static-datasets" title="Link to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">NeuroGraph.preprocess</span> <span class="kn">import</span> <span class="n">Brain_Connectome_Rest_Download</span>
 <span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="linenos"> 3</span>
@@ -240,7 +238,7 @@
 </div>
 </section>
 <section id="download-and-preprocess-dynamic-datasets">
-<h2>Download and preprocess dynamic datasets<a class="headerlink" href="#download-and-preprocess-dynamic-datasets" title="Permalink to this heading">¶</a></h2>
+<h2>Download and preprocess dynamic datasets<a class="headerlink" href="#download-and-preprocess-dynamic-datasets" title="Link to this heading">¶</a></h2>
 <p>We also offer similar functionalities for constructing dynamic datasets. You can create a dynamic REST dataset from the data stored locally as follows.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph</span> <span class="kn">import</span> <span class="n">preprocess</span>
 <span class="linenos">2</span>
