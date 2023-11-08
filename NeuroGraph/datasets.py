@@ -129,7 +129,7 @@ class NeuroGraphDataset(InMemoryDataset):
 
 class NeuroGraphDynamic():
     r"""Graph-based neuroimaging benchmark datasets, e.g.,
-        :obj:`"DynHCPGender"`, :obj:`"DynHCPAge"`, :obj:`"DynHCPState"`,
+        :obj:`"DynHCPGender"`, :obj:`"DynHCPAge"`, :obj:`"DynHCPActivity"`,
         :obj:`"DynHCPWM"`, or :obj:`"DynHCPFI"`
 
         Args:
