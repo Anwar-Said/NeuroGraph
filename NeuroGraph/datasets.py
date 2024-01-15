@@ -59,7 +59,7 @@ class NeuroGraphDataset(InMemoryDataset):
     filenames = {
         'HCPGender': 'r6hlz2arm7yiy6v6981cv2nzq3b0meax.zip',
         'HCPActivity': 'b4g59ibn8itegr0rpcd16m9ajb2qyddf.zip',
-        'HCPAge': 'static/lzzks4472czy9f9vc8aikp7pdbknmtfe.zip',
+        'HCPAge': 'lzzks4472czy9f9vc8aikp7pdbknmtfe.zip',
         'HCPWM': 'xtmpa6712fidi94x6kevpsddf9skuoxy.zip',
         'HCPFI': 'g2md9h9snh7jh6eeay02k1kr9m4ido9f.zip',
     }
@@ -129,8 +129,8 @@ class NeuroGraphDataset(InMemoryDataset):
 
 class NeuroGraphDynamic():
     r"""Graph-based neuroimaging benchmark datasets, e.g.,
-        :obj:`"DynHCP-Gender"`, :obj:`"DynHCP-Age"`, :obj:`"DynHCP-State"`,
-        :obj:`"DynHCP-WM"`, or :obj:`"DynHCP-FI"`
+        :obj:`"DynHCPGender"`, :obj:`"DynHCPAge"`, :obj:`"DynHCPActivity"`,
+        :obj:`"DynHCPWM"`, or :obj:`"DynHCPFI"`
 
         Args:
             root (str): Root directory where the dataset should be saved.
@@ -150,21 +150,13 @@ class NeuroGraphDynamic():
     def __init__(self,root, name):
         self.root = root
         self.name = name
-        
-
-        # self.urls = {"DynHCP-Gender":'https://vanderbilt.box.com/shared/static/mj0z6unea34lfz1hkdwsinj7g22yohxn.zip',
-        #             "DynHCP-State":'https://vanderbilt.box.com/shared/static/2so3fnfqakeu6hktz322o3nm2c8ocus7.zip',
-        #             "DynHCP-Age":'https://vanderbilt.box.com/shared/static/195f9teg4t4apn6kl6hbc4ib4g9addtq.zip',
-        #             "DynHCP-WM":'https://vanderbilt.box.com/shared/static/mxy8fq3ghm60q6h7uhnu80pgvfxs6xo2.zip',
-        #             "DynHCP-FI":'https://vanderbilt.box.com/shared/static/un7w3ohb2mmyjqt1ou2wm3g87y1lfuuo.zip'
-        #             }
         assert name in self.filenames.keys()
         self.name = name
         file_path = os.path.join(self.root,self.name,'processed', self.name+".pt")
         if not os.path.exists(file_path):
             self.download()
         # else:
-        #     print('dataset not found! The name of the datasets are: "DynHCP-Gender","DynHCP-Activity","DynHCP-Age","DynHCP-WM","DynHCP-FI"')
+        #     print('dataset not found! The name of the datasets are: "DynHCPGender","DynHCPActivity","DynHCPAge","DynHCPWM","DynHCPFI"')
         self.dataset, self.labels = self.load_data()
     
     # def download(self,url):

@@ -17,10 +17,10 @@ NeuroGraph utilizes the `PyG` `InMemoryDataset` class to facilitate the loading 
 .. code-block:: python
     :linenos:
 
-    from NeuroGraph.datasets import NeuroGraphStatic
+    from NeuroGraph.datasets import NeuroGraphDataset
 
 
-    dataset = NeuroGraphStatic(root="data/", name= "HCPGender")
+    dataset = NeuroGraphDataset(root="data/", name= "HCPGender")
 
     print(dataset.num_classes)
     print(dataset.num_features)

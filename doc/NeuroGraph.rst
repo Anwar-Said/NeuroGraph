@@ -1,5 +1,6 @@
 NeuroGraph is a collection of graph-based neuroimaging datasets that span multiple categories of demographics, mental states and cognitive traits. The following provides an overview of these categories and their associated datasets.
 
+The data is made available in accordance with the WU-Minn HCP Consortium Open Access Data Use Terms (Step 4), which can be found at  https://www.humanconnectome.org/study/hcp-young-adult/document/wu-minn-hcp-consortium-open-access-data-use-terms.
 
 Demographics
 --------------------------

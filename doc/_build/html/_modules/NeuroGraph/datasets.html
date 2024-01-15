@@ -154,7 +154,7 @@
     <span class="n">filenames</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;HCPGender&#39;</span><span class="p">:</span> <span class="s1">&#39;r6hlz2arm7yiy6v6981cv2nzq3b0meax.zip&#39;</span><span class="p">,</span>
         <span class="s1">&#39;HCPActivity&#39;</span><span class="p">:</span> <span class="s1">&#39;b4g59ibn8itegr0rpcd16m9ajb2qyddf.zip&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;HCPAge&#39;</span><span class="p">:</span> <span class="s1">&#39;static/lzzks4472czy9f9vc8aikp7pdbknmtfe.zip&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;HCPAge&#39;</span><span class="p">:</span> <span class="s1">&#39;lzzks4472czy9f9vc8aikp7pdbknmtfe.zip&#39;</span><span class="p">,</span>
         <span class="s1">&#39;HCPWM&#39;</span><span class="p">:</span> <span class="s1">&#39;xtmpa6712fidi94x6kevpsddf9skuoxy.zip&#39;</span><span class="p">,</span>
         <span class="s1">&#39;HCPFI&#39;</span><span class="p">:</span> <span class="s1">&#39;g2md9h9snh7jh6eeay02k1kr9m4ido9f.zip&#39;</span><span class="p">,</span>
     <span class="p">}</span>
@@ -233,8 +233,8 @@
 <a class="viewcode-back" href="../../datasets.html#NeuroGraph.datasets.NeuroGraphDynamic">[docs]</a>
 <span class="k">class</span> <span class="nc">NeuroGraphDynamic</span><span class="p">():</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Graph-based neuroimaging benchmark datasets, e.g.,</span>
-<span class="sd">        :obj:`&quot;DynHCP-Gender&quot;`, :obj:`&quot;DynHCP-Age&quot;`, :obj:`&quot;DynHCP-State&quot;`,</span>
-<span class="sd">        :obj:`&quot;DynHCP-WM&quot;`, or :obj:`&quot;DynHCP-FI&quot;`</span>
+<span class="sd">        :obj:`&quot;DynHCPGender&quot;`, :obj:`&quot;DynHCPAge&quot;`, :obj:`&quot;DynHCPActivity&quot;`,</span>
+<span class="sd">        :obj:`&quot;DynHCPWM&quot;`, or :obj:`&quot;DynHCPFI&quot;`</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            root (str): Root directory where the dataset should be saved.</span>
@@ -254,21 +254,13 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        
-
-        <span class="c1"># self.urls = {&quot;DynHCP-Gender&quot;:&#39;https://vanderbilt.box.com/shared/static/mj0z6unea34lfz1hkdwsinj7g22yohxn.zip&#39;,</span>
-        <span class="c1">#             &quot;DynHCP-State&quot;:&#39;https://vanderbilt.box.com/shared/static/2so3fnfqakeu6hktz322o3nm2c8ocus7.zip&#39;,</span>
-        <span class="c1">#             &quot;DynHCP-Age&quot;:&#39;https://vanderbilt.box.com/shared/static/195f9teg4t4apn6kl6hbc4ib4g9addtq.zip&#39;,</span>
-        <span class="c1">#             &quot;DynHCP-WM&quot;:&#39;https://vanderbilt.box.com/shared/static/mxy8fq3ghm60q6h7uhnu80pgvfxs6xo2.zip&#39;,</span>
-        <span class="c1">#             &quot;DynHCP-FI&quot;:&#39;https://vanderbilt.box.com/shared/static/un7w3ohb2mmyjqt1ou2wm3g87y1lfuuo.zip&#39;</span>
-        <span class="c1">#             }</span>
         <span class="k">assert</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">filenames</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;processed&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;.pt&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
         <span class="c1"># else:</span>
-        <span class="c1">#     print(&#39;dataset not found! The name of the datasets are: &quot;DynHCP-Gender&quot;,&quot;DynHCP-Activity&quot;,&quot;DynHCP-Age&quot;,&quot;DynHCP-WM&quot;,&quot;DynHCP-FI&quot;&#39;)</span>
+        <span class="c1">#     print(&#39;dataset not found! The name of the datasets are: &quot;DynHCPGender&quot;,&quot;DynHCPActivity&quot;,&quot;DynHCPAge&quot;,&quot;DynHCPWM&quot;,&quot;DynHCPFI&quot;&#39;)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
     
     <span class="c1"># def download(self,url):</span>
