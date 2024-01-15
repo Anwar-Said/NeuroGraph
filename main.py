@@ -41,6 +41,7 @@ def logger(info):
     f = open(os.path.join(res_path, 'results_new.csv'), 'a')
     print(info, file=f)
 
+# fix seed
 torch.manual_seed(args.seed)
 if torch.cuda.is_available():
     torch.cuda.manual_seed(args.seed)
@@ -106,7 +107,6 @@ for index in range(args.runs):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
     gnn = eval(args.model)
-    # model = GNNs(args,train_dataset,args.hidden,args.num_layers,gnn).to(args.device) # to apply GNNs 
     model = ResidualGNNs(args,train_dataset,args.hidden,args.hidden_mlp,args.num_layers,gnn).to(args.device) ## apply GNN*
     print(model)
     total_params = sum(p.numel() for p in model.parameters())
@@ -126,26 +126,12 @@ for index in range(args.runs):
             best_val_acc = val_acc
             if epoch> int(args.epochs/2):
                 torch.save(model.state_dict(), path + args.dataset+args.model+'task-checkpoint-best-acc.pkl')
-        # if args.early_stopping > 0 and epoch > args.epochs // 2:
-        #     tmp = tensor(val_acc_history[-(args.early_stopping + 1):-1])
-        #     # print(tmp)
-        #     if val_acc > tmp.mean().item():
-        #         print("early stopped!")
-        #         break
+       
+
+    #test the model   
     model.load_state_dict(torch.load(path + args.dataset+args.model+'task-checkpoint-best-acc.pkl'))
     model.eval()
     test_acc = test(test_loader)
     test_loss = train(test_loader).item()
     test_acc_history.append(test_acc)
     test_loss_history.append(test_loss)
-end = time.time()
-log = "dataset, {}, model, {},hidden, {},epochs, {},batch size, {}, loss,{}, acc, {}, std,{}, running time {}".format(args.dataset, args.model, 
-args.hidden, args.epochs,args.batch_size,
-round(np.mean(test_loss_history),4),round(np.mean(test_acc_history)*100,2),
-round(np.std(test_acc_history)*100,2),(end-start))
-print(log)
-log = "{}, {}, {}, {}, {},{}, {},{},{}".format(args.dataset, args.model, 
-args.hidden, args.epochs,args.batch_size,
-round(np.mean(test_loss_history),4),round(np.mean(test_acc_history)*100,2),
-round(np.std(test_acc_history)*100,2),(end-start))
-logger(log)
