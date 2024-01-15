@@ -49,15 +49,6 @@ class ResidualGNNs(torch.nn.Module):
             nn.Dropout(0.5),
             nn.Linear((hidden//2), args.num_classes),
         )
-        
-    
-    
-    # def reset_parameters(self):
-    #     # for conv in self.convs:
-    #     #     conv.reset_parameter()
-    #     self.conv1.reset_parameters()
-    #     self.conv2.reset_parameters()
-    #     self.mlp.reset_parameters()
 
     def forward(self, data):
         x, edge_index, batch = data.x, data.edge_index, data.batch
@@ -67,16 +58,6 @@ class ResidualGNNs(torch.nn.Module):
         xs = [x]        
         for conv in self.convs:
             xs += [conv(xs[-1], edge_index).tanh()]
-
-        # xx = data.x.reshape(data.num_graphs, data.x.shape[1],-1)
-        # h.append(torch.stack([t.triu().flatten()[t.triu().flatten().nonzero(as_tuple=True)] for t in xx]))
-        # x = self.aggr(x,batch)
-        # h.append(x)
-        # xx = torch.stack([t.triu().flatten()[t.triu().flatten().nonzero(as_tuple=True)] for t in xx])
-        # x = self.aggr(x,batch)
-        # xx = self.bn(xx)
-        # x = self.bnh(x)
-        # x = self.attention(xx,x)
         h = []
         for i, xx in enumerate(xs):
             if i== 0:
