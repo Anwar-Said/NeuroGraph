@@ -85,6 +85,7 @@ def train(train_loader):
         optimizer.zero_grad()
     return total_loss/len(train_loader.dataset)
 
+@torch.no_grad()
 def test(loader):
     model.eval()
     correct = 0
