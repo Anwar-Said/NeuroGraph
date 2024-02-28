@@ -1,12 +1,13 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='NeuroGraph',
     version='3.0.0',
-    description='A Python package for graph-based neuroimaging benchmarks and tools',
+    long_description='A Python package for graph-based neuroimaging benchmarks and tools',
+    long_description_content_type='text/markdown',
     author='Anwar Said',
     author_email='<anwar.said@vanderbilt.edu>',
-    packages=['NeuroGraph'],
+    packages=find_packages(),
     install_requires=[
         # List any dependencies your package requires
         'boto3',
