@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NeuroGraph.datasets &mdash; NeuroGraph 2.1.0 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -121,7 +123,7 @@
 <span class="sd">    +--------------------+---------+----------------------+</span>
 <span class="sd">    | Dataset            | #Graphs | Task                 |</span>
 <span class="sd">    +====================+=========+======================+</span>
-<span class="sd">    | :obj:`HCPActivity` | 7,443   | Graph Classification |</span>
+<span class="sd">    | :obj:`HCPTask`     | 7,443   | Graph Classification |</span>
 <span class="sd">    +--------------------+---------+----------------------+</span>
 <span class="sd">    | :obj:`HCPGender`   | 1,078   | Graph Classification |</span>
 <span class="sd">    +--------------------+---------+----------------------+</span>
@@ -135,7 +137,7 @@
 <span class="sd">    Args:</span>
 <span class="sd">        root (str): Root directory where the dataset should be saved.</span>
 <span class="sd">        name (str): The name of the dataset (one of :obj:`&quot;HCPGender&quot;`,</span>
-<span class="sd">            :obj:`&quot;HCPActivity&quot;`, :obj:`&quot;HCPAge&quot;`, :obj:`&quot;HCPFI&quot;`,</span>
+<span class="sd">            :obj:`&quot;HCPTask&quot;`, :obj:`&quot;HCPAge&quot;`, :obj:`&quot;HCPFI&quot;`,</span>
 <span class="sd">            :obj:`&quot;HCPWM&quot;`).</span>
 <span class="sd">        transform (callable, optional): A function/transform that takes in an</span>
 <span class="sd">            :obj:`torch_geometric.data.Data` object and returns a transformed</span>
@@ -150,10 +152,11 @@
 <span class="sd">            value, indicating whether the data object should be included in the</span>
 <span class="sd">            final dataset. (default: :obj:`None`)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://vanderbilt.box.com/shared/static&#39;</span>
     <span class="n">filenames</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;HCPGender&#39;</span><span class="p">:</span> <span class="s1">&#39;r6hlz2arm7yiy6v6981cv2nzq3b0meax.zip&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;HCPActivity&#39;</span><span class="p">:</span> <span class="s1">&#39;b4g59ibn8itegr0rpcd16m9ajb2qyddf.zip&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;HCPTask&#39;</span><span class="p">:</span> <span class="s1">&#39;8wzz4y17wpxg2stip7iybtmymnybwvma.zip&#39;</span><span class="p">,</span>
         <span class="s1">&#39;HCPAge&#39;</span><span class="p">:</span> <span class="s1">&#39;lzzks4472czy9f9vc8aikp7pdbknmtfe.zip&#39;</span><span class="p">,</span>
         <span class="s1">&#39;HCPWM&#39;</span><span class="p">:</span> <span class="s1">&#39;xtmpa6712fidi94x6kevpsddf9skuoxy.zip&#39;</span><span class="p">,</span>
         <span class="s1">&#39;HCPFI&#39;</span><span class="p">:</span> <span class="s1">&#39;g2md9h9snh7jh6eeay02k1kr9m4ido9f.zip&#39;</span><span class="p">,</span>
@@ -259,18 +262,8 @@
         <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;processed&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;.pt&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
-        <span class="c1"># else:</span>
-        <span class="c1">#     print(&#39;dataset not found! The name of the datasets are: &quot;DynHCPGender&quot;,&quot;DynHCPActivity&quot;,&quot;DynHCPAge&quot;,&quot;DynHCPWM&quot;,&quot;DynHCPFI&quot;&#39;)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
     
-    <span class="c1"># def download(self,url):</span>
-    <span class="c1">#     download_url(url, os.path.join(self.root, self.name))</span>
-    <span class="c1">#     basename = os.path.basename(url)</span>
-    <span class="c1">#     with zipfile.ZipFile(os.path.join(self.root,self.name,basename), &#39;r&#39;) as file:</span>
-    <span class="c1">#         file.extractall(os.path.join(self.root,self.name,os.path.dirname(basename)))</span>
-            <span class="c1"># self.remove(os.path.join(self.raw_dir,basename))</span>
-    
-
 <div class="viewcode-block" id="NeuroGraphDynamic.download">
 <a class="viewcode-back" href="../../datasets.html#NeuroGraph.datasets.NeuroGraphDynamic.download">[docs]</a>
     <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -278,11 +271,6 @@
         <span class="n">path</span> <span class="o">=</span> <span class="n">download_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
         <span class="n">extract_zip</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
-
-        <span class="c1"># os.rename(</span>
-        <span class="c1">#     osp.join(self.raw_dir, self.name, &#39;processed&#39;, f&#39;{self.name}.pt&#39;),</span>
-        <span class="c1">#     osp.join(self.raw_dir, &#39;data.pt&#39;))</span>
-        <span class="c1"># shutil.rmtree(osp.join(self.raw_dir, self.name))</span>
 
     
 <div class="viewcode-block" id="NeuroGraphDynamic.load_data">

@@ -37,8 +37,6 @@ class Dyn_Down_Prep():
         atlas = load_img(roi['maps'])
         
         self.volume = atlas.get_fdata()
-
-
         self.data_dict = self.construct_dataset()
 
     def extract_from_3d_no(self, fmri):
@@ -52,20 +50,12 @@ class Dyn_Down_Prep():
         Output:
             returns extracted time series # volumes x # ROIs
         '''
-    #     atlas = nib.load(path_to_atlas)
-    #     volume = atlas.get_fdata()
-    #     subj_scan = nib.load(path_to_fMRI)
-    #     fmri = subj_scan.get_fdata()
-    #     print(fmri.shape,volume.shape)
         subcor_ts = []
         for i in np.unique(self.volume):
             if i != 0: 
-    #             print(i)
                 bool_roi = np.zeros(self.volume.shape, dtype=int)
                 bool_roi[self.volume == i] = 1
                 bool_roi = bool_roi.astype(bool)
-    #             print(bool_roi.shape)
-                # extract time-series data for each roi
                 roi_ts_mean = []
                 for t in range(fmri.shape[-1]):
                     roi_ts_mean.append(np.mean(fmri[:, :, :, t][bool_roi]))
@@ -80,9 +70,6 @@ class Dyn_Down_Prep():
         return corr_matrix_copy
 
     def process_dynamic_fc(self,timeseries,y, sampling_init=None, self_loop=True):
-    
-        # assumes input shape [minibatch x time x node]
-        # output shape [minibatch x time x node x node]
         if self.dynamic_length is None:
             self.dynamic_length = timeseries.shape[0]
             sampling_init = 0
@@ -90,7 +77,6 @@ class Dyn_Down_Prep():
             if isinstance(sampling_init, int):
                 assert timeseries.shape[0] > sampling_init + self.dynamic_length
         assert sampling_init is None or isinstance(sampling_init, int)
-        # assert timeseries.ndim==3
         assert self.dynamic_length > self.window_size
 
         if sampling_init is None:
@@ -127,12 +113,8 @@ class Dyn_Down_Prep():
             
             image_path_LR = os.path.join(self.target_path, iid+"_"+os.path.basename(mri_file_path))
             reg_path = os.path.join(self.target_path, iid+"_"+os.path.basename(reg_path))
-            # regdt_path = os.path.join(target_path, iid+"_"+os.path.basename(regdt_path))
             img = nib.load(image_path_LR)
-            # if img.shape[3]<1200:
-            #     return None
             regs = np.loadtxt(reg_path)
-            # regs_dt = np.loadtxt(regdt_path)
             fmri = img.get_fdata()
             Y = self.extract_from_3d_no(fmri)
             start = 1
@@ -151,8 +133,6 @@ class Dyn_Down_Prep():
             gender = self.behavioral_df.loc[iid,'Gender']
             g = 1 if gender=="M" else 0
             labels = torch.tensor([g,self.behavioral_df.loc[iid,'AgeClass'],self.behavioral_df.loc[iid,'ListSort_AgeAdj'],self.behavioral_df.loc[iid,'PMAT24_A_CR']])
-
-            
             dynamic_fc_list = self.process_dynamic_fc(Ytm, labels)
         except:
             return None
@@ -162,8 +142,6 @@ class Dyn_Down_Prep():
     
     def construct_dataset(self):
         data_dict = {}
-        # ids = ids[:2]
-        
         for iid in self.ids:
             try:
                 dynamic_list  = self.get_dynamic_data_object(iid)
@@ -347,8 +325,6 @@ class Brain_Connectome_Rest(InMemoryDataset):
             return None
         return data
 
-
-#         ...
     def process(self):
         behavioral_df = pd.read_csv(os.path.join(self.root, 'HCP_behavioral.csv')).set_index('Subject')[['Gender','Age','ListSort_AgeAdj','PMAT24_A_CR']]
         mapping = {'22-25':0, '26-30':1,'31-35':2,'36+':3}
@@ -376,7 +352,6 @@ class Brain_Connectome_Rest(InMemoryDataset):
         torch.save((data, slices), self.processed_paths[0])
 
 class Gender_Dataset(InMemoryDataset):
-   
     def __init__(self, root,dataset_name, dataset,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name, self.dataset = root, dataset_name,dataset
         super().__init__(root, transform, pre_transform, pre_filter)
@@ -403,7 +378,6 @@ class Gender_Dataset(InMemoryDataset):
         data, slices = self.collate(gender_dataset)
         print("saving path:",self.processed_paths[0])
         torch.save((data, slices), self.processed_paths[0])
-
 
 class Age_Dataset(InMemoryDataset):
     
@@ -442,13 +416,9 @@ class WM_Dataset(InMemoryDataset):
         super().__init__(root, transform, pre_transform, pre_filter)
         
         self.data, self.slices = torch.load(self.processed_paths[0])
-        
-
     @property
     def processed_file_names(self):
         return [self.dataset_name+'.pt']
-
-
     def process(self):
         wm_dataset = []
         for d in self.dataset:
@@ -476,8 +446,6 @@ class FI_Dataset(InMemoryDataset):
         super().__init__(root, transform, pre_transform, pre_filter)
         
         self.data, self.slices = torch.load(self.processed_paths[0])
-        
-
     @property
     def processed_file_names(self):
         return [self.dataset_name+'.pt']
@@ -490,10 +458,6 @@ class FI_Dataset(InMemoryDataset):
             if not math.isnan(fl):
                 data = Data(x= d.x, edge_index=d.edge_index,y = fl)
                 fl_dataset.append(data)
-                
-            # else:
-            #     print("none found")
-        # print(len(fl_dataset))
         if self.pre_filter is not None:
         
             fl_dataset = [data for data in fl_dataset if self.pre_filter(data)]
@@ -505,7 +469,7 @@ class FI_Dataset(InMemoryDataset):
         print("saving path:",self.processed_paths[0])
         torch.save((data, slices), self.processed_paths[0])
 
-class Brain_Connectome_State(InMemoryDataset):
+class Brain_Connectome_Task(InMemoryDataset):
     
     def __init__(self, root, dataset_name,n_rois, threshold,path_to_data,n_jobs,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.path_to_data,self.n_jobs = root, dataset_name,n_rois,threshold,path_to_data,n_jobs
@@ -609,9 +573,6 @@ class Brain_Connectome_State(InMemoryDataset):
             
                 data = Data(x = corr, edge_index=edge_index, y = y)
                 data_list.append(data)
-
-                # os.remove(image_path_LR)
-                # os.remove(reg_path)
             except:
                 print("file skipped!") 
             
@@ -640,7 +601,6 @@ class Brain_Connectome_State(InMemoryDataset):
         print("saving path:",self.processed_paths[0])
         torch.save((data, slices), self.processed_paths[0])
 
-
 class Brain_Connectome_Rest_Download(InMemoryDataset):
     
     def __init__(self, root,name,n_rois, threshold,path_to_data,n_jobs,s3, transform=None, pre_transform=None, pre_filter=None):
@@ -648,8 +608,6 @@ class Brain_Connectome_Rest_Download(InMemoryDataset):
         super().__init__(root, transform, pre_transform, pre_filter)
         
         self.data, self.slices = torch.load(self.processed_paths[0])
-
-
     @property
     def processed_file_names(self):
         return [self.dataset_name+'.pt']
@@ -670,12 +628,10 @@ class Brain_Connectome_Rest_Download(InMemoryDataset):
         subcor_ts = []
         for i in np.unique(volume):
             if i != 0: 
-    #             print(i)
                 bool_roi = np.zeros(volume.shape, dtype=int)
                 bool_roi[volume == i] = 1
                 bool_roi = bool_roi.astype(bool)
-    #             print(bool_roi.shape)
-                # extract time-series data for each roi
+
                 roi_ts_mean = []
                 for t in range(fmri.shape[-1]):
                     roi_ts_mean.append(np.mean(fmri[:, :, :, t][bool_roi]))
@@ -772,7 +728,7 @@ class Brain_Connectome_Rest_Download(InMemoryDataset):
         torch.save((data, slices), self.processed_paths[0])
 
 
-class Brain_Connectome_State_Download(InMemoryDataset):
+class Brain_Connectome_Task_Download(InMemoryDataset):
     
     def __init__(self, root, dataset_name,n_rois, threshold,path_to_data,n_jobs,s3,transform=None, pre_transform=None, pre_filter=None):
         self.root, self.dataset_name,self.n_rois,self.threshold,self.target_path,self.n_jobs,self.s3 = root, dataset_name,n_rois,threshold,path_to_data,n_jobs,s3
@@ -811,10 +767,8 @@ class Brain_Connectome_State_Download(InMemoryDataset):
         
         for y, path in enumerate(all_paths):
             try:
-                # print("processing path:",path)
                 if not os.path.exists(os.path.join(self.target_path, iid+"_"+os.path.basename(path))):
                     self.s3.download_file(BUCKET_NAME, path,os.path.join(self.target_path, iid+"_"+os.path.basename(path)))
-            # if not os.path.exists(os.path.join(target_path, iid+"_"+os.path.basename(reg_paths[y]))):
                 rnd = random.randint(0,1000)
                 reg_prefix = iid+str(rnd)
                 self.s3.download_file(BUCKET_NAME, reg_paths[y],os.path.join(self.target_path, reg_prefix+"_"+os.path.basename(reg_paths[y])))
@@ -824,7 +778,6 @@ class Brain_Connectome_State_Download(InMemoryDataset):
                 img = nib.load(image_path_LR)
                 
                 regs = np.loadtxt(reg_path)
-                # regs_dt = np.loadtxt(regdt_path)
                 fmri = img.get_fdata()
                 Y = self.extract_from_3d_no(volume,fmri)
                 start = 1
@@ -875,16 +828,12 @@ class Brain_Connectome_State_Download(InMemoryDataset):
         Output:
             returns extracted time series # volumes x # ROIs
         '''
-
         subcor_ts = []
         for i in np.unique(volume):
             if i != 0: 
-    #             print(i)
                 bool_roi = np.zeros(volume.shape, dtype=int)
                 bool_roi[volume == i] = 1
                 bool_roi = bool_roi.astype(bool)
-    #             print(bool_roi.shape)
-                # extract time-series data for each roi
                 roi_ts_mean = []
                 for t in range(fmri.shape[-1]):
                     roi_ts_mean.append(np.mean(fmri[:, :, :, t][bool_roi]))
@@ -921,5 +870,3 @@ class Brain_Connectome_State_Download(InMemoryDataset):
         data, slices = self.collate(dataset)
         print("saving path:",self.processed_paths[0])
         torch.save((data, slices), self.processed_paths[0])
-
-

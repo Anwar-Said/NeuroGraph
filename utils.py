@@ -7,9 +7,18 @@ import torch.nn.functional as F
 from torch_geometric.nn import APPNP, MLP, GCNConv, GINConv, SAGEConv, GraphConv, TransformerConv, ChebConv, GATConv, SGConv, GeneralConv
 from torch.nn import Conv1d, MaxPool1d, ModuleList
 import random
-import math
+import numpy as np
 softmax = torch.nn.LogSoftmax(dim=1)
 
+def fix_seed(seed):
+    torch.manual_seed(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
 
 class ResidualGNNs(torch.nn.Module):
     def __init__(self,args, train_dataset, hidden_channels,hidden, num_layers, GNN, k=0.6):
@@ -33,7 +42,6 @@ class ResidualGNNs(torch.nn.Module):
         input_dim = int(((num_features * num_features)/2)- (num_features/2))
         self.bn = nn.BatchNorm1d(input_dim)
         self.bnh = nn.BatchNorm1d(hidden_channels*num_layers)
-        # self.attention = Attention(input_dim1, hidden_channels)
         self.mlp = nn.Sequential(
             nn.Linear(input_dim1, hidden),
             nn.BatchNorm1d(hidden),
@@ -52,9 +60,6 @@ class ResidualGNNs(torch.nn.Module):
 
     def forward(self, data):
         x, edge_index, batch = data.x, data.edge_index, data.batch
-        # for conv in self.convs:
-        #     x = conv(x, edge_index).relu()
-        
         xs = [x]        
         for conv in self.convs:
             xs += [conv(xs[-1], edge_index).tanh()]
@@ -65,14 +70,11 @@ class ResidualGNNs(torch.nn.Module):
                 x = torch.stack([t.triu().flatten()[t.triu().flatten().nonzero(as_tuple=True)] for t in xx])
                 x = self.bn(x)
             else:
-                # xx = xx.reshape(data.num_graphs, x.shape[1],-1)
                 xx = self.aggr(xx,batch)
-                # h.append(torch.stack([t.flatten() for t in xx]))
                 h.append(xx)
         
         h = torch.cat(h,dim=1)
         h = self.bnh(h)
-        # x = torch.stack(h, dim=0)
         x = torch.cat((x,h),dim=1)
         x = self.mlp(x)
-        return x
+        return softmax(x)

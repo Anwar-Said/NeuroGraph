@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction by Example &mdash; NeuroGraph 2.1.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -114,26 +116,15 @@
 <h3>Loading Static Benchmarks<a class="headerlink" href="#loading-static-benchmarks" title="Link to this heading">¶</a></h3>
 <p>NeuroGraph utilizes the <cite>PyG</cite> <cite>InMemoryDataset</cite> class to facilitate the loading of datasets. this allows an easy-to-use interface for applying graph machine learning pipelines. For example, the <cite>HCPGender</cite> benchmark can be loaded as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph.datasets</span> <span class="kn">import</span> <span class="n">NeuroGraphDataset</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span>
-<span class="linenos">4</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">NeuroGraphDataset</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;data/&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span> <span class="s2">&quot;HCPGender&quot;</span><span class="p">)</span>
-<span class="linenos">5</span>
-<span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">num_classes</span><span class="p">)</span>
-<span class="linenos">7</span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">num_features</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">NeuroGraphDataset</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;data/&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span> <span class="s2">&quot;HCPGender&quot;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">num_classes</span><span class="p">)</span>
+<span class="linenos">4</span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">num_features</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="loading-dynamic-dataset">
 <h3>Loading Dynamic Dataset<a class="headerlink" href="#loading-dynamic-dataset" title="Link to this heading">¶</a></h3>
 <p>To efficiently store and utilize the dynamic datasets in <cite>PyG`</cite> Batch format, we provide the corresponding functionality. Here is an example of loading the <cite>DynHCPGender</cite> dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph.datasets</span> <span class="kn">import</span> <span class="n">NeuroGraphDynamic</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="n">data_obj</span> <span class="o">=</span> <span class="n">NeuroGraphDynamic</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;data/&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span> <span class="s2">&quot;DynHCPGender&quot;</span><span class="p">)</span>
-<span class="linenos">4</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">data_obj</span><span class="o">.</span><span class="n">dataset</span>
-<span class="linenos">5</span><span class="n">labels</span> <span class="o">=</span> <span class="n">data_obj</span><span class="o">.</span><span class="n">labels</span>
-<span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>
-</pre></div>
-</div>
 <p>The dataset is a list of dynamic graphs represented in the <cite>PyG</cite> batch format, making it compatible with graph machine learning pipelines.</p>
 </section>
 </section>
@@ -141,31 +132,23 @@
 <section id="preprocessing-examples">
 <h1>Preprocessing Examples<a class="headerlink" href="#preprocessing-examples" title="Link to this heading">¶</a></h1>
 <p>To bridge the gap betwee NeuroGraph and graph machine learning domains, NeuroGraph offers tools to easily preprocess and construct graph-based neuroimaging datasets. Here, we demonstrate how to preprocess your own data to construct functional connectomes and generate corresponding graphs-based representations.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph</span> <span class="kn">import</span> <span class="n">utils</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="n">fc</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">fmri</span><span class="p">,</span> <span class="n">regs</span><span class="p">,</span> <span class="n">n_rois</span><span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1"># fmri and regs could be numpy arrays</span>
-</pre></div>
-</div>
 <p>The corresponding <cite>Adjacency matrix</cite> and <cite>PyG</cite> data objects can be created from the functional_connectome as follows.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph</span> <span class="kn">import</span> <span class="n">utils</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="n">adj</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_adj</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># construct the adjacency matrix</span>
-<span class="linenos">4</span><span class="n">data</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_data</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># construct PyG data object</span>
+<span class="linenos">2</span><span class="n">adj</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_adj</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># construct the adjacency matrix</span>
+<span class="linenos">3</span><span class="n">data</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_data</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># construct PyG data object</span>
 </pre></div>
 </div>
 <p>We use correlation as node features while constructing data object from functional connectome.</p>
 <p>The following is the source code for processing one fMRI scan with corresponding regressor using our preprocessing pipeline.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">NeuroGraph</span> <span class="kn">import</span> <span class="n">utils</span>
-<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">nilearn.image</span> <span class="kn">import</span> <span class="n">load_img</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span><span class="n">img</span> <span class="o">=</span> <span class="n">load_img</span><span class="p">(</span><span class="s2">&quot;data/raw/1.nii.gz&quot;</span><span class="p">)</span> <span class="c1"># 1.nii.gz is fMRI scan</span>
-<span class="linenos"> 6</span><span class="n">regs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;data/raw/1.txt&quot;</span><span class="p">)</span> <span class="c1"># 1.txt is the movement regressor</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="n">fmri</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span>
-<span class="linenos"> 9</span><span class="n">fc</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">fmri</span><span class="p">,</span> <span class="n">regs</span><span class="p">,</span> <span class="n">n_rois</span><span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
-<span class="linenos">10</span><span class="n">adj</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_adj</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># construct the adjacency matrix</span>
-<span class="linenos">11</span><span class="n">data</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_data</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># construct torch Data object</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="linenos">2</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">3</span><span class="kn">from</span> <span class="nn">nilearn.image</span> <span class="kn">import</span> <span class="n">load_img</span>
+<span class="linenos">4</span><span class="n">img</span> <span class="o">=</span> <span class="n">load_img</span><span class="p">(</span><span class="s2">&quot;data/raw/1.nii.gz&quot;</span><span class="p">)</span> <span class="c1"># 1.nii.gz is fMRI scan</span>
+<span class="linenos">5</span><span class="n">regs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;data/raw/1.txt&quot;</span><span class="p">)</span> <span class="c1"># 1.txt is the movement regressor</span>
+<span class="linenos">6</span><span class="n">fmri</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span>
+<span class="linenos">7</span><span class="n">fc</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">fmri</span><span class="p">,</span> <span class="n">regs</span><span class="p">,</span> <span class="n">n_rois</span><span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="linenos">8</span><span class="n">adj</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_adj</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># construct the adjacency matrix</span>
+<span class="linenos">9</span><span class="n">data</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_data</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># construct torch Data object</span>
 </pre></div>
 </div>
 <p>Our preprocessing pipeline consists of five steps and can also be applied seperately in steps.</p>
@@ -176,13 +159,12 @@
 <span class="linenos"> 5</span><span class="n">img</span> <span class="o">=</span> <span class="n">load_img</span><span class="p">(</span><span class="s2">&quot;data/raw/1.nii.gz&quot;</span><span class="p">)</span>
 <span class="linenos"> 6</span><span class="n">regs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;data/raw/1.txt&quot;</span><span class="p">)</span>
 <span class="linenos"> 7</span><span class="n">fmri</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="n">parcells</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">parcellation</span><span class="p">(</span><span class="n">fmri</span><span class="p">,</span><span class="n">n_rois</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">## this uses schaefer atlas by default</span>
-<span class="linenos">10</span><span class="n">Y</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">remove_drifts</span><span class="p">(</span><span class="n">parcells</span><span class="p">)</span>
-<span class="linenos">11</span><span class="n">Y</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">regress_head_motions</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">regs</span><span class="p">)</span>
-<span class="linenos">12</span><span class="n">fc</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_corr</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
-<span class="linenos">13</span><span class="n">adj</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_adj</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># construct the adjacency matrix</span>
-<span class="linenos">14</span><span class="n">data</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_data</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">parcells</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">parcellation</span><span class="p">(</span><span class="n">fmri</span><span class="p">,</span><span class="n">n_rois</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">## this uses schaefer atlas by default</span>
+<span class="linenos"> 9</span><span class="n">Y</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">remove_drifts</span><span class="p">(</span><span class="n">parcells</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">Y</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">regress_head_motions</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">regs</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">fc</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_corr</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">adj</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_adj</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># construct the adjacency matrix</span>
+<span class="linenos">13</span><span class="n">data</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">construct_data</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

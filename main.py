@@ -41,14 +41,7 @@ def logger(info):
     f = open(os.path.join(res_path, 'results_new.csv'), 'a')
     print(info, file=f)
 
-# fix seed
-torch.manual_seed(args.seed)
-if torch.cuda.is_available():
-    torch.cuda.manual_seed(args.seed)
-random.seed(args.seed)
-np.random.seed(args.seed)
-
-
+fix_seed(args.seed)
 dataset = NeuroGraphDataset(root=root, name= args.dataset)
 print(dataset.num_classes)
 print(len(dataset))
@@ -57,11 +50,11 @@ print("dataset loaded successfully!",args.dataset)
 labels = [d.y.item() for d in dataset]
 
 train_tmp, test_indices = train_test_split(list(range(len(labels))),
-                        test_size=0.2, stratify=labels,random_state=123,shuffle= True)
+                        test_size=0.2, stratify=labels,random_state=args.seed,shuffle= True)
 tmp = dataset[train_tmp]
 train_labels = [d.y.item() for d in tmp]
 train_indices, val_indices = train_test_split(list(range(len(train_labels))),
- test_size=0.125, stratify=train_labels,random_state=123,shuffle = True)
+ test_size=0.125, stratify=train_labels,random_state=args.seed,shuffle = True)
 train_dataset = tmp[train_indices]
 val_dataset = tmp[val_indices]
 test_dataset = dataset[test_indices]
@@ -77,7 +70,7 @@ def train(train_loader):
     total_loss = 0
     for data in train_loader:  
         data = data.to(args.device)
-        out = model(data)  # Perform a single forward pass.
+        out = model(data)  
         loss = criterion(out, data.y) 
         total_loss +=loss
         loss.backward()
@@ -92,27 +85,20 @@ def test(loader):
     for data in loader:  
         data = data.to(args.device)
         out = model(data)  
-        pred = out.argmax(dim=1)  # Use the class with highest probability.
-        correct += int((pred == data.y).sum())  # Check against ground-truth labels.
+        pred = out.argmax(dim=1)  
+        correct += int((pred == data.y).sum())
     return correct / len(loader.dataset)  
 
 val_acc_history, test_acc_history, test_loss_history = [],[],[]
 seeds = [123,124]
 for index in range(args.runs):
     start = time.time()
-    torch.manual_seed(seeds[index])
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed(seeds[index])
-    random.seed(seeds[index])
-    np.random.seed(seeds[index])
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
+    fix_seed(seeds[index])
     gnn = eval(args.model)
     model = ResidualGNNs(args,train_dataset,args.hidden,args.hidden_mlp,args.num_layers,gnn).to(args.device) ## apply GNN*
     print(model)
     total_params = sum(p.numel() for p in model.parameters())
     print(f"Total number of parameters is: {total_params}")
-    # model.reset_parameters()
     optimizer = Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     loss, test_acc = [],[]
     best_val_acc,best_val_loss = 0.0,0.0
@@ -125,7 +111,7 @@ for index in range(args.runs):
         val_acc_history.append(val_acc)
         if val_acc > best_val_acc:
             best_val_acc = val_acc
-            if epoch> int(args.epochs/2):
+            if epoch> int(args.epochs/2):## save the best model
                 torch.save(model.state_dict(), path + args.dataset+args.model+'task-checkpoint-best-acc.pkl')
        
 

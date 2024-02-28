@@ -18,10 +18,7 @@ NeuroGraph utilizes the `PyG` `InMemoryDataset` class to facilitate the loading 
     :linenos:
 
     from NeuroGraph.datasets import NeuroGraphDataset
-
-
     dataset = NeuroGraphDataset(root="data/", name= "HCPGender")
-
     print(dataset.num_classes)
     print(dataset.num_features)
 
@@ -34,9 +31,7 @@ To efficiently store and utilize the dynamic datasets in `PyG`` Batch format, we
 
 .. code-block:: python
     :linenos:
-
     from NeuroGraph.datasets import NeuroGraphDynamic
-
     data_obj = NeuroGraphDynamic(root="data/", name= "DynHCPGender")
     dataset = data_obj.dataset
     labels = data_obj.labels
@@ -53,9 +48,7 @@ To bridge the gap betwee NeuroGraph and graph machine learning domains, NeuroGra
 
 .. code-block:: python
     :linenos:
-
     from NeuroGraph import utils
-
     fc = utils.preprocess(fmri, regs, n_rois= 1000) # fmri and regs could be numpy arrays
 
 The corresponding `Adjacency matrix` and `PyG` data objects can be created from the functional_connectome as follows. 
@@ -64,7 +57,6 @@ The corresponding `Adjacency matrix` and `PyG` data objects can be created from 
     :linenos:
 
     from NeuroGraph import utils
-
     adj = utils.construct_adj(fc, threshold= 5) # construct the adjacency matrix
     data = utils.construct_data(fc, label= 1,threshold = 5) # construct PyG data object
 
@@ -78,10 +70,8 @@ The following is the source code for processing one fMRI scan with corresponding
     from NeuroGraph import utils
     import numpy as np
     from nilearn.image import load_img
-
     img = load_img("data/raw/1.nii.gz") # 1.nii.gz is fMRI scan
     regs = np.loadtxt("data/raw/1.txt") # 1.txt is the movement regressor
-
     fmri = img.get_fdata()
     fc = utils.preprocess(fmri, regs, n_rois= 100)
     adj = utils.construct_adj(fc, threshold= 5) # construct the adjacency matrix
@@ -100,7 +90,6 @@ Our preprocessing pipeline consists of five steps and can also be applied sepera
     img = load_img("data/raw/1.nii.gz")
     regs = np.loadtxt("data/raw/1.txt")
     fmri = img.get_fdata()
-
     parcells = utils.parcellation(fmri,n_rois = 100) ## this uses schaefer atlas by default
     Y = utils.remove_drifts(parcells)
     Y = utils.regress_head_motions(Y,regs)
@@ -285,12 +274,3 @@ Dyn_Down_Prep class downloads and preprocess the rest dataset and provides a dic
             labels.append(gender)
     print("Fluid intelligence dataset created with {} {} number of instances".format(len(fi_dataset), len(labels)))
     new_dataset = {'labels':labels, "batches":fi_dataset}
-
-
-
-
-
-
-
-
-
