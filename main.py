@@ -65,6 +65,7 @@ test_loader = DataLoader(test_dataset, args.batch_size, shuffle=False)
 args.num_features,args.num_classes = dataset.num_features,dataset.num_classes
 
 criterion = torch.nn.CrossEntropyLoss()
+#criterion = torch.nn.L1Loss()
 def train(train_loader):
     model.train()
     total_loss = 0
@@ -77,6 +78,7 @@ def train(train_loader):
         optimizer.step() 
         optimizer.zero_grad()
     return total_loss/len(train_loader.dataset)
+    # return total_loss/len(train_loader) # For L1 loss. This may retun higher loss on the regression tasks since the paper used (total_loss/len(train_loader.dataset))
 
 @torch.no_grad()
 def test(loader):
