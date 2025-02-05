@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction by Example &mdash; NeuroGraph 2.1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/documentation_options.js?v=20623aea"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -107,13 +107,13 @@
            <div itemprop="articleBody">
              
   <section id="introduction-by-example">
-<h1>Introduction by Example<a class="headerlink" href="#introduction-by-example" title="Link to this heading">¶</a></h1>
+<h1>Introduction by Example<a class="headerlink" href="#introduction-by-example" title="Permalink to this heading">¶</a></h1>
 <p>We will briefly introduce the fundamental concepts of NeuroGraph through self-contained examples. We closely follow the data representation format of <a class="reference external" href="https://pytorch-geometric.readthedocs.io/en/latest/">PyG</a>. Therefore, interested readers are referred to the <a class="reference external" href="https://pytorch-geometric.readthedocs.io/en/latest/">PyG</a> documentation for an introduction to the graph machine learning and PyG’s data representation formats.</p>
 <section id="loading-benchmark-datasets">
-<h2>Loading Benchmark datasets<a class="headerlink" href="#loading-benchmark-datasets" title="Link to this heading">¶</a></h2>
+<h2>Loading Benchmark datasets<a class="headerlink" href="#loading-benchmark-datasets" title="Permalink to this heading">¶</a></h2>
 <p>NeuroGraph provides two classes for loading static and dynamic benchmark datastes.</p>
 <section id="loading-static-benchmarks">
-<h3>Loading Static Benchmarks<a class="headerlink" href="#loading-static-benchmarks" title="Link to this heading">¶</a></h3>
+<h3>Loading Static Benchmarks<a class="headerlink" href="#loading-static-benchmarks" title="Permalink to this heading">¶</a></h3>
 <p>NeuroGraph utilizes the <cite>PyG</cite> <cite>InMemoryDataset</cite> class to facilitate the loading of datasets. this allows an easy-to-use interface for applying graph machine learning pipelines. For example, the <cite>HCPGender</cite> benchmark can be loaded as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph.datasets</span> <span class="kn">import</span> <span class="n">NeuroGraphDataset</span>
 <span class="linenos">2</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">NeuroGraphDataset</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;data/&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span> <span class="s2">&quot;HCPGender&quot;</span><span class="p">)</span>
@@ -123,14 +123,14 @@
 </div>
 </section>
 <section id="loading-dynamic-dataset">
-<h3>Loading Dynamic Dataset<a class="headerlink" href="#loading-dynamic-dataset" title="Link to this heading">¶</a></h3>
+<h3>Loading Dynamic Dataset<a class="headerlink" href="#loading-dynamic-dataset" title="Permalink to this heading">¶</a></h3>
 <p>To efficiently store and utilize the dynamic datasets in <cite>PyG`</cite> Batch format, we provide the corresponding functionality. Here is an example of loading the <cite>DynHCPGender</cite> dataset:</p>
 <p>The dataset is a list of dynamic graphs represented in the <cite>PyG</cite> batch format, making it compatible with graph machine learning pipelines.</p>
 </section>
 </section>
 </section>
 <section id="preprocessing-examples">
-<h1>Preprocessing Examples<a class="headerlink" href="#preprocessing-examples" title="Link to this heading">¶</a></h1>
+<h1>Preprocessing Examples<a class="headerlink" href="#preprocessing-examples" title="Permalink to this heading">¶</a></h1>
 <p>To bridge the gap betwee NeuroGraph and graph machine learning domains, NeuroGraph offers tools to easily preprocess and construct graph-based neuroimaging datasets. Here, we demonstrate how to preprocess your own data to construct functional connectomes and generate corresponding graphs-based representations.</p>
 <p>The corresponding <cite>Adjacency matrix</cite> and <cite>PyG</cite> data objects can be created from the functional_connectome as follows.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph</span> <span class="kn">import</span> <span class="n">utils</span>
@@ -169,10 +169,10 @@
 </div>
 </section>
 <section id="preprocessing-human-connectome-project-hcp1200-dataset">
-<h1>Preprocessing Human Connectome Project (HCP1200) Dataset<a class="headerlink" href="#preprocessing-human-connectome-project-hcp1200-dataset" title="Link to this heading">¶</a></h1>
+<h1>Preprocessing Human Connectome Project (HCP1200) Dataset<a class="headerlink" href="#preprocessing-human-connectome-project-hcp1200-dataset" title="Permalink to this heading">¶</a></h1>
 <p>NeuroGraph utilizes the HCP1200 dataset as a primary data source for exploring the dataset generation search space and constructing benchmarks. The HCP1200 dataset can be accessed from the <a class="reference external" href="https://www.humanconnectome.org/study/hcp-young-adult">HCP website</a> by accepting the data usage terms. Additionally, the dataset is also available on an AWS S3 bucket, which can be accessed once authorization has been obtained from HCP. In this section, we provide various functions that allow you to crawl and preprocess the HCP datasets, enabling the construction of graph-based neuroimaging datasets. These functions streamline the process of obtaining and preparing the data for further analysis and modeling.</p>
 <section id="download-and-preprocess-static-datasets">
-<h2>Download and preprocess static datasets<a class="headerlink" href="#download-and-preprocess-static-datasets" title="Link to this heading">¶</a></h2>
+<h2>Download and preprocess static datasets<a class="headerlink" href="#download-and-preprocess-static-datasets" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">NeuroGraph.preprocess</span> <span class="kn">import</span> <span class="n">Brain_Connectome_Rest_Download</span>
 <span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="linenos"> 3</span>
@@ -220,7 +220,7 @@
 </div>
 </section>
 <section id="download-and-preprocess-dynamic-datasets">
-<h2>Download and preprocess dynamic datasets<a class="headerlink" href="#download-and-preprocess-dynamic-datasets" title="Link to this heading">¶</a></h2>
+<h2>Download and preprocess dynamic datasets<a class="headerlink" href="#download-and-preprocess-dynamic-datasets" title="Permalink to this heading">¶</a></h2>
 <p>We also offer similar functionalities for constructing dynamic datasets. You can create a dynamic REST dataset from the data stored locally as follows.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">NeuroGraph</span> <span class="kn">import</span> <span class="n">preprocess</span>
 <span class="linenos">2</span>
@@ -274,42 +274,6 @@
 <span class="linenos">34</span>        <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gender</span><span class="p">)</span>
 <span class="linenos">35</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Age dataset created with </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> number of instances&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">age_dataset</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span>
 <span class="linenos">36</span><span class="n">new_dataset</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;labels&#39;</span><span class="p">:</span><span class="n">labels</span><span class="p">,</span> <span class="s2">&quot;batches&quot;</span><span class="p">:</span><span class="n">age_dataset</span><span class="p">}</span>
-<span class="linenos">37</span>
-<span class="linenos">38</span><span class="n">wm_dataset</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="p">[],[]</span>
-<span class="linenos">39</span><span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<span class="linenos">40</span>    <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos">41</span>        <span class="k">continue</span>
-<span class="linenos">42</span>    <span class="n">l</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">y</span>
-<span class="linenos">43</span>    <span class="n">wm</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
-<span class="linenos">44</span>    <span class="k">if</span> <span class="n">wm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1">## there are some None which should be removed</span>
-<span class="linenos">45</span>        <span class="n">sub</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos">46</span>        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
-<span class="linenos">47</span>    <span class="c1">#         print(d)</span>
-<span class="linenos">48</span>            <span class="n">new_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">edge_index</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">wm</span><span class="p">)</span>
-<span class="linenos">49</span>            <span class="n">sub</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
-<span class="linenos">50</span>        <span class="n">batch</span> <span class="o">=</span> <span class="n">Batch</span><span class="o">.</span><span class="n">from_data_list</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
-<span class="linenos">51</span>        <span class="n">wm_dataset</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
-<span class="linenos">52</span>        <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gender</span><span class="p">)</span>
-<span class="linenos">53</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Working memory dataset created with </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> number of instances&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wm_dataset</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span>
-<span class="linenos">54</span><span class="n">new_dataset</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;labels&#39;</span><span class="p">:</span><span class="n">labels</span><span class="p">,</span> <span class="s2">&quot;batches&quot;</span><span class="p">:</span><span class="n">wm_dataset</span><span class="p">}</span>
-<span class="linenos">55</span>
-<span class="linenos">56</span><span class="n">fi_dataset</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="p">[],[]</span>
-<span class="linenos">57</span><span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<span class="linenos">58</span>    <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos">59</span>        <span class="k">continue</span>
-<span class="linenos">60</span>    <span class="n">l</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">y</span>
-<span class="linenos">61</span>    <span class="n">fi</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
-<span class="linenos">62</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">fi</span><span class="p">):</span> <span class="c1">## there are some None which should be removed</span>
-<span class="linenos">63</span>        <span class="n">sub</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos">64</span>        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
-<span class="linenos">65</span>    <span class="c1">#         print(d)</span>
-<span class="linenos">66</span>            <span class="n">new_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">edge_index</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fi</span><span class="p">)</span>
-<span class="linenos">67</span>            <span class="n">sub</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
-<span class="linenos">68</span>        <span class="n">batch</span> <span class="o">=</span> <span class="n">Batch</span><span class="o">.</span><span class="n">from_data_list</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
-<span class="linenos">69</span>        <span class="n">fi_dataset</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
-<span class="linenos">70</span>        <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gender</span><span class="p">)</span>
-<span class="linenos">71</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fluid intelligence dataset created with </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> number of instances&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fi_dataset</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span>
-<span class="linenos">72</span><span class="n">new_dataset</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;labels&#39;</span><span class="p">:</span><span class="n">labels</span><span class="p">,</span> <span class="s2">&quot;batches&quot;</span><span class="p">:</span><span class="n">fi_dataset</span><span class="p">}</span>
 </pre></div>
 </div>
 </section>
